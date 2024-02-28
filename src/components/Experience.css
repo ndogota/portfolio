@@ -1,9 +1,24 @@
 .experience {
-    border: 2px solid #ff0000;
+    height: 100%;
+    backdrop-filter: hue-rotate(150deg);
+}
 
-    height: 100vh;
-
+.experienceContent {
     display: flex;
-    align-items: center;
+    flex-wrap:wrap;
+}
+
+.experienceItem {
+    width:100%;
+    display: flex;
     justify-content: center;
+    flex-direction: column;
+}
+
+.experienceItem:nth-child(odd) {
+    align-items: center;
+}
+
+.experienceItem > * {
+    margin-bottom: var(--padding);
 }

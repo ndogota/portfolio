@@ -1,9 +1,0 @@
-header {
-    border: 2px solid rgba(40, 185, 60, 0.5);
-
-    height: 14vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}

@@ -1,0 +1,55 @@
+.mobileMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    color: white;
+    z-index: 1000;
+
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.headerMobileMenu {
+    height: var(--headerHeight);
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    padding-left: var(--padding);
+    padding-right: var(--padding);
+}
+
+.navMobileMenu {
+    display: flex;
+    flex-direction: column;
+
+    padding-left: var(--padding);
+    padding-right: var(--padding);
+
+    font-size: calc(var(--fontSize) + 2em);
+}
+
+.closeButtonMobile {
+    font-size: calc(var(--fontSize) + 2em);
+}
+
+/* responsive */
+
+@media (min-width: 320px) {
+
+}
+
+@media (min-width: 480px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1200px) {
+}

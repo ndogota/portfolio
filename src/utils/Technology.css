@@ -1,0 +1,11 @@
+.technologyDiv {
+    display: flex;
+}
+
+.technologyItem {
+    font-size: calc(var(--fontSize) * 1.5);
+    padding: calc(var(--padding) / 2);
+    margin-right: 0.5rem;
+
+    color: #fff;
+}

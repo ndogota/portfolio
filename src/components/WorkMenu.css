@@ -1,0 +1,48 @@
+.workMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #0F0F0F;
+    z-index: 10;
+
+    animation: fadeIn 0.5s ease-out forwards;
+
+    padding-right: var(--padding);
+    padding-left: var(--padding);
+}
+
+.headerWorkMenu {
+    height: var(--headerHeight);
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.contentWorkMenu {
+    font-size: calc(var(--fontSize) * 2);
+}
+
+.contentWorkMenu > * {
+    margin-bottom: 1em;
+}
+
+/* responsive */
+
+@media (min-width: 320px) {
+
+}
+
+@media (min-width: 480px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1200px) {
+}

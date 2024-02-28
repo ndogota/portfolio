@@ -1,9 +1,53 @@
 .contact {
-    border: 2px solid #ff0000;
-
     height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    backdrop-filter: hue-rotate(200deg);
 }
+
+.contactContent {
+    display: flex;
+    flex-wrap:wrap;
+
+    height: calc(100% - var(--headerHeight));
+}
+
+.contactItem {
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contactItem:first-child {
+    display: none;
+}
+
+.contactItem > * {
+    margin-bottom: 1rem;
+}
+
+.socialLogoWrapper {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.socialLogo {
+    font-size: calc(var(--fontSize) + 2em);
+}
+
+@media (min-width: 320px) {
+}
+
+@media (min-width: 480px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1200px) {
+}
+
+

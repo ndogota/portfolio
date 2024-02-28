@@ -1,0 +1,190 @@
+/* globals vars */
+
+:root {
+    --blue: #1e90ff;
+    --white: #ffffff;
+
+    --headerHeight: 3rem;
+    --headerHeight320: 4rem;
+    --headerHeight480: 4rem;
+    --headerHeight768: 4rem;
+    --headerHeight992: 4rem;
+    --headerHeight1200: 4rem;
+
+    --padding: 1rem;
+    --padding320: 2rem;
+    --padding480: 2rem;
+    --padding768: 2rem;
+    --padding992: 2rem;
+    --padding1200: 2rem;
+
+    --titleSectionHeight: 2rem;
+    --titleSectionHeight320: 2rem;
+    --titleSectionHeight480: 2rem;
+    --titleSectionHeight768: 2rem;
+    --titleSectionHeight992: 2rem;
+    --titleSectionHeight1200: 2rem;
+
+    --buttonProjectsHeight: 3rem;
+    --buttonProjectsHeight320: 2rem;
+    --buttonProjectsHeight480: 2rem;
+    --buttonProjectsHeight768: 2rem;
+    --buttonProjectsHeight992: 2rem;
+    --buttonProjectsHeight1200: 2rem;
+
+    --fontSize: 0.5em;
+    --fontSize320: 0.6em;
+    --fontSize480: 0.7em;
+    --fontSize768: 0.8em;
+    --fontSize992: 0.9em;
+    --fontSize1200: 1em;
+}
+
+body {
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: lowercase;
+
+    font-size: var(--fontSize);
+}
+
+.App {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+.content {
+    height: 100%;
+
+    padding-left: var(--padding);
+    padding-right: var(--padding);
+    padding-top: var(--headerHeight);
+}
+
+.titleSection {
+    height: var(--titleSectionHeight);
+
+    display: flex;
+    align-items: center;
+}
+
+/* background */
+
+.bg {
+    animation:slide 20s ease-in-out infinite alternate;
+    background-image: linear-gradient(-45deg, #000000 50%, rgb(44, 36, 0) 50%);
+    bottom:0;
+    left:-50%;
+    opacity:.5;
+    position:fixed;
+    right:-50%;
+    top:0;
+    z-index:-1;
+}
+
+.bg2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 21s;
+}
+
+.bg3 {
+    animation-duration: 22s;
+}
+
+/* responsive */
+
+@media (min-width: 320px) {
+    body {
+        font-size: var(--fontSize320);
+    }
+}
+
+@media (min-width: 480px) {
+    body {
+        font-size: var(--fontSize480);
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        font-size: var(--fontSize768);
+    }
+}
+
+@media (min-width: 992px) {
+    body {
+        font-size: var(--fontSize992);
+    }
+}
+
+@media (min-width: 1200px) {
+    body {
+        font-size: var(--fontSize1200);
+    }
+}
+
+/* remove buttons css style */
+
+button, input[type="submit"], input[type="reset"] {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+/* animations */
+
+@keyframes slide {
+    0% {
+        transform:translateX(-5%);
+    }
+    100% {
+        transform:translateX(5%);
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        scale: 0.95;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideTop {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}

@@ -1,5 +1,40 @@
 .home {
-    border: 2px solid #ff0000;
-
     height: 100vh;
 }
+
+.homeLayout {
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeContent {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+
+.homeTypeWriter {
+    color: grey;
+}
+
+/* responsive */
+
+@media (min-width: 320px) {
+}
+
+@media (min-width: 480px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1200px) {
+}
+
+
