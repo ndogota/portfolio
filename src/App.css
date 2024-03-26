@@ -4,7 +4,7 @@
     --blue: #1e90ff;
     --white: #ffffff;
 
-    --headerHeight: 3rem;
+    --headerHeight: 4rem;
     --headerHeight320: 4rem;
     --headerHeight480: 4rem;
     --headerHeight768: 4rem;
@@ -21,9 +21,9 @@
     --titleSectionHeight: 2rem;
     --titleSectionHeight320: 2rem;
     --titleSectionHeight480: 2rem;
-    --titleSectionHeight768: 2rem;
-    --titleSectionHeight992: 2rem;
-    --titleSectionHeight1200: 2rem;
+    --titleSectionHeight768: 3rem;
+    --titleSectionHeight992: 3rem;
+    --titleSectionHeight1200: 3rem;
 
     --buttonProjectsHeight: 3rem;
     --buttonProjectsHeight320: 2rem;
@@ -40,14 +40,18 @@
     --fontSize1200: 1em;
 }
 
+html {
+    background-color: #000000;
+}
+
 body {
     font-family: "Roboto Mono", monospace;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
     text-transform: lowercase;
-
     font-size: var(--fontSize);
+    background-color: #0F0F0F;
 }
 
 .App {
@@ -55,9 +59,12 @@ body {
     color: #fff;
 }
 
+.appFadeIn {
+    animation: fadeIn 1s ease-out forwards;
+}
+
 .content {
     height: 100%;
-
     padding-left: var(--padding);
     padding-right: var(--padding);
     padding-top: var(--headerHeight);
@@ -65,7 +72,6 @@ body {
 
 .titleSection {
     height: var(--titleSectionHeight);
-
     display: flex;
     align-items: center;
 }
@@ -74,7 +80,7 @@ body {
 
 .bg {
     animation:slide 20s ease-in-out infinite alternate;
-    background-image: linear-gradient(-45deg, #000000 50%, rgb(44, 36, 0) 50%);
+    background-image: linear-gradient(-45deg, #000000 50%, rgb(59, 41, 0) 50%);
     bottom:0;
     left:-50%;
     opacity:.5;
@@ -99,11 +105,19 @@ body {
     body {
         font-size: var(--fontSize320);
     }
+
+    .titleSection {
+        height: var(--titleSectionHeight320);
+    }
 }
 
 @media (min-width: 480px) {
     body {
         font-size: var(--fontSize480);
+    }
+
+    .titleSection {
+        height: var(--titleSectionHeight480);
     }
 }
 
@@ -111,17 +125,39 @@ body {
     body {
         font-size: var(--fontSize768);
     }
+
+    .titleSection {
+        height: var(--titleSectionHeight768);
+    }
 }
 
 @media (min-width: 992px) {
     body {
         font-size: var(--fontSize992);
     }
+
+    .titleSection {
+        height: var(--titleSectionHeight992);
+    }
+
+    .content {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
 }
 
 @media (min-width: 1200px) {
     body {
         font-size: var(--fontSize1200);
+    }
+
+    .titleSection {
+        height: var(--titleSectionHeight1200);
+    }
+
+    .content {
+        padding-left: 6rem;
+        padding-right: 6rem;
     }
 }
 
@@ -137,14 +173,21 @@ button, input[type="submit"], input[type="reset"] {
     outline: inherit;
 }
 
+/* remove link css style */
+
+a {
+    color: #ffffff;
+    text-decoration: none; /* no underline */
+}
+
 /* animations */
 
 @keyframes slide {
     0% {
-        transform:translateX(-5%);
+        transform:translateX(-20%);
     }
     100% {
-        transform:translateX(5%);
+        transform:translateX(20%);
     }
 }
 
@@ -168,6 +211,15 @@ button, input[type="submit"], input[type="reset"] {
     to {
         opacity: 1;
         scale: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
 

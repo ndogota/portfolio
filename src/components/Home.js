@@ -1,8 +1,10 @@
-import "./Home.css"
-import Header from "./header/Header";
 import React from 'react';
-
 import {Typewriter} from "react-simple-typewriter";
+import {Link} from "react-scroll";
+
+import Header from "./header/Header";
+
+import "./Home.css"
 
 const Home = ({menuItems, width, breakpoint, isOpen, toggleMenu}) => {
 
@@ -24,8 +26,14 @@ const Home = ({menuItems, width, breakpoint, isOpen, toggleMenu}) => {
                                 deleteSpeed={50}
                                 delaySpeed={1000}
                             />
-        </span>
+                        </span>
                     </h1>
+
+                    <Link to="skills" smooth={true} duration={1000} className="scrollDownAnimation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -26,7 +26,6 @@
 .itemProject {
     font-size: calc(var(--fontSize) + 1em);
     padding-bottom: var(--padding);
-
     width:100%;
     display: flex;
     justify-content: center;
@@ -36,7 +35,7 @@
 
 
 .itemProject:hover {
-    background: linear-gradient(-45deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0));
+    background: linear-gradient(-45deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.05));
     background-size: 200% 200%;
     animation: gradient 15s ease infinite;
 }
@@ -47,18 +46,13 @@
 
 /* responsive */
 
-@media (min-width: 320px) {
-
-}
-
-@media (min-width: 480px) {
-}
-
 @media (min-width: 768px) {
-}
+    .itemProject {
+        width: 25%;
+        font-size: calc(var(--fontSize) + 0.6em);
+    }
 
-@media (min-width: 992px) {
-}
-
-@media (min-width: 1200px) {
+    .gridProjects {
+        height: calc(100vh - 2rem - var(--headerHeight) - var(--titleSectionHeight1200) - var(--buttonProjectsHeight))
+    }
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from "react-scroll";
+
 import {AiOutlineClose} from "react-icons/ai";
+
 import "./MobileMenu.css";
 const MobileMenu = ({menuItems, isOpen, toggleMenu}) => {
     return (

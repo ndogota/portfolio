@@ -4,7 +4,6 @@
 
 .homeLayout {
     height: 100%;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,27 +13,52 @@
     display: flex;
     text-align: center;
     flex-direction: column;
+    margin-top: -8rem;
 }
 
 .homeTypeWriter {
     color: grey;
 }
 
-/* responsive */
-
-@media (min-width: 320px) {
+.scrollDownAnimation {
+    position: absolute;
+    bottom: 4%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-@media (min-width: 480px) {
+.scrollDownAnimation span{
+    display: block;
+    width: 24px;
+    height: 24px;
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
+    transform: rotate(45deg);
+    margin: -10px;
+    animation: animate 2s infinite;
 }
 
-@media (min-width: 768px) {
+.box span:nth-child(2)
+{
+    animation-delay: -0.2s;
 }
 
-@media (min-width: 992px) {
+.box span:nth-child(3)
+{
+    animation-delay: -0.4s;
 }
 
-@media (min-width: 1200px) {
+@keyframes animate{
+    0%{
+        opacity: 0;
+        transform: rotate(45deg) translate(-20px, -20px);
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: rotate(45deg) translate(20px, 20px);
+    }
 }
-
 

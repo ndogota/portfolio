@@ -1,8 +1,10 @@
-import './StickyHeader.css'
-import {Link} from "react-scroll";
 import React from "react";
+import { Link } from "react-scroll";
 import { LuArrowUp } from "react-icons/lu";
-import {GiHamburgerMenu} from "react-icons/gi";
+import { GiHamburgerMenu } from "react-icons/gi";
+
+import './StickyHeader.css'
+
 const StickyHeader = ({menuItems, width, breakpoint, isOpen, toggleMenu}) => {
     return (
         <>

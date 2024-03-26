@@ -4,10 +4,9 @@
 }
 
 .contactContent {
+    height: calc(100% - var(--headerHeight));
     display: flex;
     flex-wrap:wrap;
-
-    height: calc(100% - var(--headerHeight));
 }
 
 .contactItem {
@@ -16,10 +15,6 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-.contactItem:first-child {
-    display: none;
 }
 
 .contactItem > * {
@@ -34,20 +29,4 @@
 .socialLogo {
     font-size: calc(var(--fontSize) + 2em);
 }
-
-@media (min-width: 320px) {
-}
-
-@media (min-width: 480px) {
-}
-
-@media (min-width: 768px) {
-}
-
-@media (min-width: 992px) {
-}
-
-@media (min-width: 1200px) {
-}
-
 

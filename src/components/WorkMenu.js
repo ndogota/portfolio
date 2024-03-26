@@ -2,7 +2,6 @@ import React from 'react';
 import "./WorkMenu.css"
 import Technology from "../utils/Technology";
 import { AiOutlineClose } from "react-icons/ai";
-
 import {useEffect} from "react";
 
 const WorkMenu = ({isOpen, toggleMenu, project}) => {
@@ -16,9 +15,7 @@ const WorkMenu = ({isOpen, toggleMenu, project}) => {
                 }
             }
         };
-
         document.addEventListener('keydown', keyDownHandler);
-
         return () => {
             document.removeEventListener('keydown', keyDownHandler);
         };
@@ -46,7 +43,7 @@ const WorkMenu = ({isOpen, toggleMenu, project}) => {
                             <p>description : {project.description}</p>
                         </div>
                         <div>
-                            <p>github : {project.github}</p>
+                            <a href={project.github} target="_blank" rel="noreferrer"><p>github : {project.github}</p></a>
                         </div>
                     </div>
                 </div>

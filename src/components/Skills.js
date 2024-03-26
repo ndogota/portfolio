@@ -1,5 +1,5 @@
-import "./Skills.css"
-import { LuArrowUp } from "react-icons/lu";
+import React from "react";
+
 import { MdWeb } from "react-icons/md";
 import { FaMobile } from "react-icons/fa";
 import { FaDatabase } from "react-icons/fa";
@@ -8,7 +8,8 @@ import { FaCloud } from "react-icons/fa";
 import { MdOutlineSecurity } from "react-icons/md";
 import { GiArtificialIntelligence } from "react-icons/gi";
 import { MdOutlineManageHistory } from "react-icons/md";
-import React from "react";
+
+import "./Skills.css"
 
 const Skills = () => {
     return (
@@ -21,7 +22,7 @@ const Skills = () => {
                     <div className="item">
                         <MdWeb fontSize="6em"/>
                         <h3>développement Web</h3>
-                        <p>Maîtrise de HTML, CSS, JavaScript pour créer des sites web dynamiques et réactifs. Expérience
+                        <p>Maîtrise de HTML, CSS, JavaScript pour créer des sites web dynamiques. Expérience
                             avec ReactJS pour le développement d'applications web modernes.</p>
                     </div>
                     <div className="item">
@@ -29,7 +30,7 @@ const Skills = () => {
                         <h3>développement mobile</h3>
                         <p>Expertise en React Native pour la création d'applications mobiles cross-platform, offrant une
                             expérience utilisateur fluide sur iOS et Android. Capable de connecter ces applications à des
-                            back-ends complexes pour des fonctionnalités étendues.</p>
+                            back-ends pour des fonctionnalités étendues.</p>
                     </div>
                     <div className="item">
                         <FaDatabase fontSize="6em"/>
@@ -60,13 +61,13 @@ const Skills = () => {
                     <div className="item">
                         <GiArtificialIntelligence fontSize="6em"/>
                         <h3>intelligence artificielle et machine learning</h3>
-                        <p>Fondements en Python pour le développement d'algorithmes de machine learning et d'intelligence
+                        <p>Fondements en Python pour le développement d'algorithmes, de machine learning et d'intelligence
                             artificielle, appliqués dans des projets de traitement de données et d'automatisation des processus.</p>
                     </div>
                     <div className="item">
                         <MdOutlineManageHistory fontSize="6em"/>
                         <h3>gestion de projet</h3>
-                        <p> Capacité à gérer des projets de développement web et mobile du concept à la livraison, en
+                        <p>Capacité à gérer des projets de développement web et mobile du concept à la livraison, en
                             utilisant des méthodologies agiles pour assurer une collaboration efficace et une exécution
                             dans les délais.</p>
                     </div>

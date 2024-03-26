@@ -1,9 +1,8 @@
+import React from "react";
 import { Link } from 'react-scroll'
+import { GiHamburgerMenu } from "react-icons/gi";
 
 import "./Header.css"
-import React from "react";
-
-import { GiHamburgerMenu } from "react-icons/gi";
 
 // TODO : mutualiser le sticky et le header normal (un truc a faire avec le css a modifier -> padding horizontal)
 const Header = ({menuItems, width, breakpoint, isOpen, toggleMenu}) => {
