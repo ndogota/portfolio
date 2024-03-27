@@ -12,7 +12,7 @@ const StickyHeader = ({menuItems, width, breakpoint, isOpen, toggleMenu}) => {
                 <div className="stickyHeaderMobile">
                     <div className="logo">
                         <Link to="home" smooth={true} duration={1000} >
-                            <h1>NICOLAEDOGOTARU</h1>
+                            <h1>ND</h1>
                         </Link>
                     </div>
                     <button onClick={toggleMenu}>
@@ -22,7 +22,7 @@ const StickyHeader = ({menuItems, width, breakpoint, isOpen, toggleMenu}) => {
                 <div className="stickyHeader">
                     <div className="logo">
                         <Link to="home" smooth={true} duration={1000} >
-                            <h1>NICOLAEDOGOTARU</h1>
+                            <h1>ND</h1>
                         </Link>
                     </div>
                     <nav className="navStickyHeader">

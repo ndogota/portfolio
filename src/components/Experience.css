@@ -49,7 +49,7 @@
 
 @media (min-width: 992px) {
     .experienceItem:nth-child(even) {
-        font-size: calc(var(--fontSize) * 2);
+        font-size: calc(var(--fontSize) * 1.5);
     }
 
     .experienceContent {

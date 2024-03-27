@@ -45,7 +45,7 @@
   },
   {
     "id": 4,
-    "type": "software",
+    "type": "script",
     "title": "my_parallelepiped",
     "technology": [
       "c"
@@ -89,7 +89,7 @@
   {
     "id": 7,
     "type": "script",
-    "title": "little_ansible",
+    "title": "software",
     "technology": [
       "python"
     ],
@@ -102,7 +102,7 @@
   },
   {
     "id": 8,
-    "type": "script",
+    "type": "software",
     "title": "chroot_manager",
     "technology": [
       "python"
@@ -144,7 +144,7 @@
   },
   {
     "id": 11,
-    "type": "web",
+    "type": "jeu",
     "title": "pong_js",
     "technology": [
       "javascript"
@@ -200,7 +200,7 @@
   },
   {
     "id": 16,
-    "type": "software",
+    "type": "",
     "title": "database_model",
     "technology": [
       "mysql"
