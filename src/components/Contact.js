@@ -22,7 +22,7 @@ const Contact = () => {
                                 <FaGithubSquare className="socialLogo" />
                             </a>
                         </div>
-                        <p>Pour télecharger mon CV vous pouvez cliquer <a href="https://github.com/ndogota" target="_blank" rel="noreferrer"><span style={{textDecoration:"underline", fontWeight: "bold"}}>ici</span></a>.</p>
+                        <p>Pour télecharger mon CV vous pouvez cliquer <a href="/cv_fullstack.pdf" target="_blank" rel="noreferrer"><span style={{textDecoration:"underline", fontWeight: "bold"}}>ici</span></a>.</p>
                     </div>
                 </div>
             </div>
