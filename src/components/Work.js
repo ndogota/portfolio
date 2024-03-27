@@ -6,6 +6,7 @@ import Technology from "../utils/Technology";
 import "./Work.css"
 
 import Projects from "../Projects.json";
+import {Link} from "react-scroll";
 
 const Work = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -42,20 +43,20 @@ const Work = () => {
                     <h2>2//PROJETS</h2>
                 </div>
                 <div className="buttonProjects">
-                    <button className={filter === '' ? 'selected' : ''} onClick={() => setFilter('')}>TOUS</button>
-                    <button className={filter === 'web' ? 'selected' : ''} onClick={() => setFilter('web')}>WEB</button>
-                    <button className={filter === 'mobile' ? 'selected' : ''} onClick={() => setFilter('mobile')}>MOBILE</button>
-                    <button className={filter === 'script' ? 'selected' : ''} onClick={() => setFilter('script')}>SCRIPT</button>
-                    <button className={filter === 'software' ? 'selected' : ''} onClick={() => setFilter('software')}>LOGICIEL</button>
-                    <button className={filter === 'network' ? 'selected' : ''} onClick={() => setFilter('network')}>RÉSEAUX</button>
-                    <button className={filter === 'game' ? 'selected' : ''} onClick={() => setFilter('game')}>JEU</button>
+                    <button className={filter === '' ? 'selected' : ''} onClick={() => setFilter('')}>Tous</button>
+                    <button className={filter === 'web' ? 'selected' : ''} onClick={() => setFilter('web')}>Web</button>
+                    <button className={filter === 'mobile' ? 'selected' : ''} onClick={() => setFilter('mobile')}>Mobile</button>
+                    <button className={filter === 'script' ? 'selected' : ''} onClick={() => setFilter('script')}>Script</button>
+                    <button className={filter === 'software' ? 'selected' : ''} onClick={() => setFilter('software')}>Logiciel</button>
+                    <button className={filter === 'network' ? 'selected' : ''} onClick={() => setFilter('network')}>Réseau</button>
+                    <button className={filter === 'game' ? 'selected' : ''} onClick={() => setFilter('game')}>Jeu</button>
                 </div>
                 <div className="gridProjects">
                     {filteredProjects.map(project => (
-                        <div key={project.id} className="itemProject" onClick={() => toggleMenu(project)}>
+                        <Link key={project.id} className="itemProject" onClick={() => toggleMenu(project)}>
                             {<h4>{project.title}</h4>}
                             <Technology technologies={project.technology} />
-                        </div>
+                        </Link>
                     ))}
 
                     {Array.from({ length: projects.length - filteredProjects.length }).map((_, index) => (
