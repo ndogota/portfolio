@@ -4,11 +4,11 @@ import "./Experience.css"
 
 const Experience = () => {
     return (
-        <div className="experience" id="Parcours">
+        <div className="experience" id="PARCOURS">
             <div className="content">
                 <div className="experienceWrapper">
                     <div className="titleSection">
-                        <h2>3//Parcours</h2>
+                        <h2>3//PARCOURS</h2>
                     </div>
                     <div className="experienceContent">
                         <div className="experienceItem ">
@@ -17,8 +17,9 @@ const Experience = () => {
                         <div className="experienceItem">
                             <div>
                                 <div>
-                                    <h4>Master 1 & 2 - Architecte en Ingénierie Système Réseau - BAC +5</h4>
-                                    <p>ETNA, IONIS Education Group - Campus Paris-Ivry (octobre 2021 → octobre 2023)</p>
+                                    <h4>Master 1 & 2 - Architecte en Ingénierie Système Réseau</h4>
+                                    <h4>BAC +5</h4>
+                                    <p className="informationItem">ETNA, IONIS Education Group - Campus Paris-Ivry (octobre 2021 → octobre 2023)</p>
                                 </div>
                                 <div>
                                     <p>- Conception et déploiement d'infrastructures réseau sécurisées pour les environnements d'entreprise.</p>
@@ -28,8 +29,9 @@ const Experience = () => {
 
                             <div>
                                 <div>
-                                    <h4>Bachelor - Responsable de projet web et mobile - BAC +3</h4>
-                                    <p>ETNA, IONIS Education Group - Campus Paris-Ivry (octobre 2020 → octobre 2021)</p>
+                                    <h4>Bachelor - Responsable de projet web et mobile</h4>
+                                    <h4>BAC +3</h4>
+                                    <p className="informationItem">ETNA, IONIS Education Group - Campus Paris-Ivry (octobre 2020 → octobre 2021)</p>
                                 </div>
 
                                 <div>
@@ -40,8 +42,9 @@ const Experience = () => {
 
                             <div>
                                 <div>
-                                    <h4>Année Préparatoire Accélérée à l’ETNA - Chargé de développement et de mise en œuvre de projet SI - BAC +2</h4>
-                                    <p>ETNA, IONIS Education Group - Campus Paris-Ivry (octobre 2019 → octobre 2020)</p>
+                                    <h4>Année Préparatoire Accélérée à l’ETNA - Chargé de développement et de mise en œuvre de projet SI</h4>
+                                    <h4>BAC +2</h4>
+                                    <p className="informationItem">ETNA, IONIS Education Group - Campus Paris-Ivry (octobre 2019 → octobre 2020)</p>
                                 </div>
 
                                 <div>
@@ -56,26 +59,21 @@ const Experience = () => {
                         <div className="experienceItem ">
                             <div>
                                 <h4>Assistant Responsable de la Sécurité des Systèmes d'Information</h4>
-
-                                <p>Conseil départemental de la Seine-Saint-Denis, Bobigny (octobre 2021 → octobre 2023)</p>
+                                <p className="informationItem">Conseil départemental de la Seine-Saint-Denis, Bobigny (octobre 2021 → octobre 2023)</p>
                                 <p>- Mise en place de politiques et de procédures de sécurité pour protéger les informations et les systèmes d'information.</p>
                                 <p>- Surveillance et évaluation des risques de sécurité pour prévenir les incidents de sécurité.</p>
                             </div>
 
                             <div>
                                 <h4>Responsable de projet Web</h4>
-
-                                <p>Mayara Clothing, Lyon (octobre 2020 → octobre 2021)</p>
-
+                                <p className="informationItem">Mayara Clothing, Lyon (octobre 2020 → octobre 2021)</p>
                                 <p>- Conception, développement et mise en ligne de sites web et applications web selon les besoins des clients.</p>
                                 <p>- Analyse des performances des sites et optimisation SEO pour améliorer la visibilité et l'engagement.</p>
                             </div>
 
                             <div>
                                 <h4>Développeur Intégrateur Web</h4>
-
-                                <p>OwnLeadr, Lyon (avril 2020 → octobre 2020)</p>
-
+                                <p className="informationItem">OwnLeadr, Lyon (avril 2020 → octobre 2020)</p>
                                 <p>- Développement de fonctionnalités front-end et back-end pour des sites web dynamiques et réactifs.</p>
                                 <p>- Intégration de solutions de gestion de contenu et personnalisation de thèmes et plugins.</p>
                             </div>

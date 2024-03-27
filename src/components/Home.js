@@ -10,15 +10,15 @@ const Home = ({menuItems, width, breakpoint, isOpen, toggleMenu}) => {
 
 
     return (
-        <div className="home" id="Accueil">
+        <div className="home" id="ACCUEIL">
             <Header menuItems={menuItems} width={width} breakpoint={breakpoint} isOpen={isOpen} toggleMenu={toggleMenu}/>
             <div className="homeLayout">
                 <div className="homeContent">
                     <h1 className="homeTypeWriter">
-                        NicolaeDogotaru.{''}
+                        NICOLAEDOGOTARU.{''}
                         <span style={{ color: 'white'}}>
                             <Typewriter
-                                words={['Web', 'Mobile', 'Script', 'Logiciel', 'Réseaux', 'Jeu', 'Design']}
+                                words={['WEB', 'MOBILE', 'SCRIPT', 'LOGICIEL', 'RÉSEAUX', 'JEU', 'DESIGN']}
                                 loop={0}
                                 cursor
                                 cursorStyle='|'

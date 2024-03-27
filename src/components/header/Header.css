@@ -29,6 +29,15 @@
 
 /* responsive */
 
+/* responsive */
+
+@media (min-width: 992px) {
+    .headerDesktop {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}
+
 @media (min-width: 1200px) {
     .headerDesktop {
         padding-left: 6rem;

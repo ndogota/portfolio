@@ -13,10 +13,10 @@ import "./Skills.css"
 
 const Skills = () => {
     return (
-        <div className="skills" id="Compétences">
+        <div className="skills" id="COMPÉTENCES">
             <div className="content">
                 <div className="titleSection">
-                    <h2>1//Compétences</h2>
+                    <h2>1//COMPÉTENCES</h2>
                 </div>
                 <div className="skillsContent">
                     <div className="item">

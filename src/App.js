@@ -14,6 +14,7 @@ import AnimatedBackground from "./components/AnimatedBackground";
 
 import './Reset.css';
 import './App.css';
+import {BrowserView} from "react-device-detect";
 
 function App() {
     const { width } = useViewport();
@@ -26,23 +27,23 @@ function App() {
     const menuItems = [
         {
             id: 1,
-            title: "Accueil",
+            title: "ACCUEIL",
         },
         {
             id: 2,
-            title: "Compétences",
+            title: "COMPÉTENCES",
         },
         {
             id: 3,
-            title: "Projets",
+            title: "PROJETS",
         },
         {
             id: 4,
-            title: "Parcours",
+            title: "PARCOURS",
         },
         {
             id: 5,
-            title: "Contact",
+            title: "CONTACT",
         },
     ]
 
@@ -89,7 +90,10 @@ function App() {
     return (
         <div className={`App ${animationDone ? 'appFadeIn' : ''}`}>
             {showStickyHeader && <StickyHeader isVisible={showStickyHeader} menuItems={menuItems} width={width} breakpoint={breakpoint} toggleMenu={toggleMenu}/>}
-            <AnimatedCursor color='255, 255, 255'/>
+
+            <BrowserView>
+                <AnimatedCursor color='255, 255, 255'/>
+            </BrowserView>
 
             <Home menuItems={menuItems} width={width} breakpoint={breakpoint} toggleMenu={toggleMenu}/>
             <Skills />

@@ -35,6 +35,10 @@
     margin-bottom: var(--padding);
 }
 
+.informationItem {
+    color: grey;
+}
+
 /* responsive */
 
 @media (min-width: 320px) {

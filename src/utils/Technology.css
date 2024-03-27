@@ -3,9 +3,9 @@
 }
 
 .technologyItem {
-    font-size: calc(var(--fontSize) * 1.5);
-    padding: calc(var(--padding) / 2);
+    font-size: calc(var(--fontSize) * 1.3);
+    padding: calc(var(--padding) / 3);
     margin-right: 0.5rem;
-
+    text-transform: uppercase;
     color: #fff;
 }
