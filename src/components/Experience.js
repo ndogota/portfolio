@@ -4,11 +4,11 @@ import "./Experience.css"
 
 const Experience = () => {
     return (
-        <div className="experience" id="parcours">
+        <div className="experience" id="Parcours">
             <div className="content">
                 <div className="experienceWrapper">
                     <div className="titleSection">
-                        <h2>3//parcours</h2>
+                        <h2>3//Parcours</h2>
                     </div>
                     <div className="experienceContent">
                         <div className="experienceItem ">
@@ -40,7 +40,7 @@ const Experience = () => {
 
                             <div>
                                 <div>
-                                    <h4>Année Préparatoire Accélérée à l’ETNA - Chargée de développement et de mise en œuvre de projet SI - BAC +2</h4>
+                                    <h4>Année Préparatoire Accélérée à l’ETNA - Chargé de développement et de mise en œuvre de projet SI - BAC +2</h4>
                                     <p>ETNA, IONIS Education Group - Campus Paris-Ivry (octobre 2019 → octobre 2020)</p>
                                 </div>
 
@@ -51,7 +51,7 @@ const Experience = () => {
                             </div>
                         </div>
                         <div className="experienceItem ">
-                            <h1>Experience</h1>
+                            <h1>Expérience</h1>
                         </div>
                         <div className="experienceItem ">
                             <div>

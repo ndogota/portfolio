@@ -36,19 +36,19 @@ const Work = () => {
     }
 
     return (
-        <div style={workStyle} className="work" id="projets">
+        <div style={workStyle} className="work" id="Projets">
             <div className="content">
                 <div className="titleSection">
-                    <h2>2//projets</h2>
+                    <h2>2//Projets</h2>
                 </div>
                 <div className="buttonProjects">
-                    <button className={filter === '' ? 'selected' : ''} onClick={() => setFilter('')}>tous</button>
-                    <button className={filter === 'web' ? 'selected' : ''} onClick={() => setFilter('web')}>web</button>
-                    <button className={filter === 'mobile' ? 'selected' : ''} onClick={() => setFilter('mobile')}>mobile</button>
-                    <button className={filter === 'script' ? 'selected' : ''} onClick={() => setFilter('script')}>script</button>
-                    <button className={filter === 'software' ? 'selected' : ''} onClick={() => setFilter('software')}>logiciel</button>
-                    <button className={filter === 'network' ? 'selected' : ''} onClick={() => setFilter('network')}>réseaux</button>
-                    <button className={filter === 'game' ? 'selected' : ''} onClick={() => setFilter('game')}>jeu</button>
+                    <button className={filter === '' ? 'selected' : ''} onClick={() => setFilter('')}>Tous</button>
+                    <button className={filter === 'web' ? 'selected' : ''} onClick={() => setFilter('web')}>Web</button>
+                    <button className={filter === 'mobile' ? 'selected' : ''} onClick={() => setFilter('mobile')}>Mobile</button>
+                    <button className={filter === 'script' ? 'selected' : ''} onClick={() => setFilter('script')}>Script</button>
+                    <button className={filter === 'software' ? 'selected' : ''} onClick={() => setFilter('software')}>Logiciel</button>
+                    <button className={filter === 'network' ? 'selected' : ''} onClick={() => setFilter('network')}>Réseaux</button>
+                    <button className={filter === 'game' ? 'selected' : ''} onClick={() => setFilter('game')}>Jeu</button>
                 </div>
                 <div className="gridProjects">
                     {filteredProjects.map(project => (
@@ -71,10 +71,3 @@ const Work = () => {
 };
 
 export default Work;
-
-/*
-
-{Array.isArray(project.technology) && project.technology.map((tech, index) => (
-                                <div key={index}>{tech}</div>
-                            ))}
- */

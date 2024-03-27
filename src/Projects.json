@@ -24,7 +24,7 @@
       "mongodb"
     ],
     "description": [
-      "Développement d'une application mobile cross-platform avec React Native, permettant aux utilisateurs desurveiller et de gérer à distance l'entretien de leurs jardins via une interface intuitive.",
+      "Développement d'une application mobile cross-platform avec React Native, permettant aux utilisateurs de surveiller et de gérer à distance l'entretien de leurs jardins via une interface intuitive.",
       "Conception d'un backend robuste utilisant Node.js et MongoDB pour le stockage et la gestion efficace des données relatives à l'état des plantes, incluant l'humidité, la température, et l'exposition solaire.",
       "Intégration d'un système d'automatisation basé sur Raspberry Pi et Python avec Flask, pour le contrôle en temps réel des systèmes d'irrigation et de lumière, réduisant le besoin d'intervention manuelle et optimisant la croissance des plantes."
     ],
@@ -38,9 +38,8 @@
       "c"
     ],
     "description": [
-      "Implémentation d'une version personnalisée de la commande Unix ls, offrant des options étendues pour afficher les fichiers et les répertoires.",
-      "Gestion des options telles que l pour le format long, a pour afficher les fichiers cachés, et r pour inverser l'ordre d'affichage.",
-      "Optimisation des performances et de la précision dans la gestion des liens symboliques, des permissions de fichiers, et des métadonnées."
+      "Implémentation d'une version personnalisée de la commande Unix ls.",
+      "Gestion des options telles que l pour le format long, a pour afficher les fichiers cachés, et r pour inverser l'ordre d'affichage."
     ],
     "github": "https://github.com/ndogota/my_ls"
   },
@@ -52,7 +51,7 @@
       "c"
     ],
     "description": [
-      "Conception d'une application pour calculer les propriétés d'un parallélépipède, y compris le volume et l'aire de surface, à partir de dimensions données.",
+      "Conception d'une application pour afficher un parallélépipède, y compris le volume et l'aire de surface, à partir de dimensions données.",
       "Interface utilisateur simple pour saisir les dimensions et choisir les calculs à effectuer.",
       "Implémentation de validations pour s'assurer que les entrées sont valides et que les calculs sont précis."
     ],
@@ -68,7 +67,7 @@
     "description": [
       "Développement d'une machine à pile simulée pour exécuter une série d'instructions basiques, simulant le fonctionnement d'une architecture CPU simplifiée.",
       "Prise en charge des opérations arithmétiques de base, du stockage et de la récupération de valeurs dans la pile.",
-      "Interface pour charger et exécuter des scripts définissant les instructions et les valeurs initiales de la pile."
+      "Language spécifique créer pour charger et exécuter des scripts définissant les instructions et les valeurs initiales de la pile."
     ],
     "github": "https://github.com/ndogota/stack_machine"
   },
@@ -126,7 +125,7 @@
     "description": [
       "Conception d'un système de reconnaissance faciale en utilisant les services cloud Azure pour l'analyse d'images.",
       "Intégration de l'API Azure Face pour détecter, identifier et vérifier les visages dans des images ou des flux vidéo.",
-      "Développement d'une interface utilisateur pour l'inscription de nouveaux visages et la gestion de la base de données de visages connus."
+      "Alerte sonore lorsque certains paramètres configurés sur l'application sont vérifiés"
     ],
     "github": "https://github.com/ndogota/reco_face"
   },
@@ -138,9 +137,8 @@
       "bash"
     ],
     "description": [
-      "Création d'un script Bash pour automatiser la compilation et l'assemblage de distributions Linux personnalisées.",
-      "Fonctionnalités pour sélectionner des paquets spécifiques, configurer des réglages par défaut, et créer des images ISO bootables.",
-      "Intégration de contrôles de qualité et de tests pour assurer la stabilité et la compatibilité des distributions générées."
+      "Simplifier l'utilisation du man.",
+      "Lancement des scripts Shell, disponible dans les dossiers selectionnable a partir du script. (dans le but d'installation de packages)"
     ],
     "github": "https://github.com/ndogota/distrib_builder"
   },
@@ -165,8 +163,7 @@
       "reactjs"
     ],
     "description": [
-      "Implémentation de mécanismes de collision et de rebond pour simuler une expérience de jeu réaliste, avec ajout de niveaux de difficulté progressifs.",
-      "Implémentation de mécanismes de collision et de rebond pour simuler une expérience de jeu réaliste, avec ajout de niveaux de difficulté progressifs.",
+      "Implémentation d'un pokedex a partir d'une API listant les informations détaillé sur les pokemons.",
       "Mise en place d'un système de pagination et de filtres pour améliorer l'expérience utilisateur lors de la navigation dans la base de données des Pokémon."
     ],
     "github": "https://github.com/ndogota/pokedex_js"

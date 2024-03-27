@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import AnimatedCursor from "react-animated-cursor";
 
 import Home from "./components/Home";
 import Skills from "./components/Skills";
@@ -9,10 +10,10 @@ import StickyHeader from "./components/header/StickyHeader";
 import MobileMenu from "./components/MobileMenu";
 import useViewport from "./hooks/useViewport";
 import Loading from "./components/Loading";
+import AnimatedBackground from "./components/AnimatedBackground";
 
 import './Reset.css';
 import './App.css';
-import AnimatedCursor from "react-animated-cursor";
 
 function App() {
     const { width } = useViewport();
@@ -21,6 +22,36 @@ function App() {
     const [isOpen, setIsOpen] = useState(false);
     const [loading, setLoading] = useState(true);
     const [animationDone, setAnimationDone] = useState(false);
+
+    const menuItems = [
+        {
+            id: 1,
+            title: "Accueil",
+        },
+        {
+            id: 2,
+            title: "Compétences",
+        },
+        {
+            id: 3,
+            title: "Projets",
+        },
+        {
+            id: 4,
+            title: "Parcours",
+        },
+        {
+            id: 5,
+            title: "Contact",
+        },
+    ]
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     useEffect(() => {
         setTimeout(() => setLoading(false), 2000);
@@ -39,29 +70,6 @@ function App() {
         }
     };
 
-    const menuItems = [
-        {
-            id: 1,
-            title: "accueil",
-        },
-        {
-            id: 2,
-            title: "compétences",
-        },
-        {
-            id: 3,
-            title: "projets",
-        },
-        {
-            id: 4,
-            title: "parcours",
-        },
-        {
-            id: 5,
-            title: "contact",
-        },
-    ]
-
     const handleScroll = () => {
         const thresholdVH = 50;
         const thresholdPixels = window.innerHeight * (thresholdVH / 100);
@@ -74,34 +82,23 @@ function App() {
         }
     };
 
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
     if (loading) {
         return <Loading/>
     }
 
-    // TODO : -put bg into a components
     return (
         <div className={`App ${animationDone ? 'appFadeIn' : ''}`}>
-            <div className="bg"></div>
-            <div className="bg bg2"></div>
-            <div className="bg bg3"></div>
-
-            <AnimatedCursor color='255, 255, 255'/>
-
             {showStickyHeader && <StickyHeader isVisible={showStickyHeader} menuItems={menuItems} width={width} breakpoint={breakpoint} toggleMenu={toggleMenu}/>}
+            <AnimatedCursor color='255, 255, 255'/>
 
             <Home menuItems={menuItems} width={width} breakpoint={breakpoint} toggleMenu={toggleMenu}/>
             <Skills />
             <Work />
             <Experience />
             <Contact />
+
             <MobileMenu menuItems={menuItems} isOpen={isOpen} toggleMenu={toggleMenu} />
+            <AnimatedBackground />
         </div>
     );
 }

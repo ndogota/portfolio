@@ -5,10 +5,10 @@ import "./Contact.css"
 
 const Contact = () => {
     return (
-        <div className="contact" id="contact">
+        <div className="contact" id="Contact">
             <div className="content">
                 <div className="titleSection">
-                    <h2>4//contact</h2>
+                    <h2>4//Contact</h2>
                 </div>
                 <div className="contactContent">
                     <div className="contactItem">
