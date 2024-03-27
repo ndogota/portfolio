@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import AnimatedCursor from "react-animated-cursor";
-import { SpeedInsights } from "@vercel/speed-insights/react"
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 
 import Home from "./components/Home";
 import Skills from "./components/Skills";
@@ -90,6 +91,7 @@ function App() {
 
     return (
         <div className={`App ${animationDone ? 'appFadeIn' : ''}`}>
+            <Analytics />
             <SpeedInsights/>
 
             {showStickyHeader && <StickyHeader isVisible={showStickyHeader} menuItems={menuItems} width={width} breakpoint={breakpoint} toggleMenu={toggleMenu}/>}
