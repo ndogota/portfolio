@@ -3,6 +3,7 @@ import "./WorkMenu.css"
 import Technology from "../utils/Technology";
 import { AiOutlineClose } from "react-icons/ai";
 import {useEffect} from "react";
+import {Link} from "react-scroll";
 
 // TODO : - Make description appear in multiple lines
 const WorkMenu = ({isOpen, toggleMenu, project}) => {
@@ -41,7 +42,10 @@ const WorkMenu = ({isOpen, toggleMenu, project}) => {
                             <Technology technologies={project.technology}/>
                         </div>
                         <div>
-                            <p>description : {project.description}</p>
+                            <p>description :</p>
+                            {project.description.map((item) => (
+                                <p>- {item}</p>
+                            ))}
                         </div>
                         <div>
                             <a href={project.github} target="_blank" rel="noreferrer"><p>github : {project.github}</p></a>
