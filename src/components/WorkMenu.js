@@ -3,9 +3,7 @@ import "./WorkMenu.css"
 import Technology from "../utils/Technology";
 import { AiOutlineClose } from "react-icons/ai";
 import {useEffect} from "react";
-import {Link} from "react-scroll";
 
-// TODO : - Make description appear in multiple lines
 const WorkMenu = ({isOpen, toggleMenu, project}) => {
     useEffect(() => {
         const keyDownHandler = event => {
