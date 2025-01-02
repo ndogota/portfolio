@@ -13,63 +13,51 @@ import "./Skills.css"
 
 const Skills = () => {
     return (
-        <div className="skills" id="COMPÉTENCES">
+        <div className="skills" id="SKILLS">
             <div className="content">
                 <div className="titleSection">
-                    <h2>1//COMPÉTENCES</h2>
+                    <h2>1//SKILLS</h2>
                 </div>
                 <div className="skillsContent">
                     <div className="item">
-                        <MdWeb fontSize="6em"/>
-                        <h3>Développement Web</h3>
-                        <p>Maîtrise de HTML, CSS, JavaScript pour créer des sites web dynamiques. Expérience
-                            avec ReactJS pour le développement d'applications web modernes.</p>
+                        <MdWeb fontSize="6em" />
+                        <h3>Web Development</h3>
+                        <p>Proficiency in HTML, CSS, and JavaScript to create dynamic websites. Experience with ReactJS for developing modern web applications.</p>
                     </div>
                     <div className="item">
-                        <FaMobile fontSize="6em"/>
-                        <h3>Développement mobile</h3>
-                        <p>Expertise en React Native pour la création d'applications mobiles cross-platform, offrant une
-                            expérience utilisateur fluide sur iOS et Android. Capable de connecter ces applications à des
-                            back-ends pour des fonctionnalités étendues.</p>
+                        <FaMobile fontSize="6em" />
+                        <h3>Mobile Development</h3>
+                        <p>Expertise in React Native for creating cross-platform mobile applications, delivering a seamless user experience on iOS and Android. Skilled in connecting these applications to backends for extended functionality.</p>
                     </div>
                     <div className="item">
-                        <FaDatabase fontSize="6em"/>
-                        <h3>Gestion de base de données</h3>
-                        <p>Expérience en conception de modèles de données et en manipulation de bases de données avec
-                            MySQL, intégration de stockage de données sécurisé et performant dans les applications.</p>
+                        <FaDatabase fontSize="6em" />
+                        <h3>Database Management</h3>
+                        <p>Experience in designing data models and handling databases with MySQL, integrating secure and efficient data storage into applications.</p>
                     </div>
                     <div className="item">
-                        <MdVideogameAsset fontSize="6em"/>
-                        <h3>Développement de jeux vidéo</h3>
-                        <p>Maîtrise de C# et Unity pour créer des expériences de jeu immersives et interactives.
-                            Capable de concevoir des mondes riches en détails, des mécaniques de jeu captivantes et des
-                            narrations profondes pour engager divers publics.</p>
+                        <MdVideogameAsset fontSize="6em" />
+                        <h3>Game Development</h3>
+                        <p>Proficiency in C# and Unity for creating immersive and interactive gaming experiences. Skilled in designing detailed worlds, captivating game mechanics, and deep narratives to engage diverse audiences.</p>
                     </div>
                     <div className="item">
-                        <FaCloud fontSize="6em"/>
-                        <h3>Infrastructure cloud et devops</h3>
-                        <p>Compétence en configuration et gestion d'infrastructures cloud avec AWS/GCP, automatisation
-                            des pipelines de CI/CD avec Jenkins/GitLab CI, et conteneurisation avec Docker et Kubernetes,
-                            permettant un déploiement et une scalabilité efficaces.</p>
+                        <FaCloud fontSize="6em" />
+                        <h3>Cloud Infrastructure and DevOps</h3>
+                        <p>Expertise in configuring and managing cloud infrastructures with AWS/GCP, automating CI/CD pipelines using Jenkins/GitLab CI, and containerization with Docker and Kubernetes, enabling efficient deployment and scalability.</p>
                     </div>
                     <div className="item">
-                        <MdOutlineSecurity fontSize="6em"/>
-                        <h3>Cybersécurité</h3>
-                        <p>Connaissance des meilleures pratiques et des solutions de sécurité pour protéger les données
-                            et les systèmes d'information contre les cyberattaques.</p>
+                        <MdOutlineSecurity fontSize="6em" />
+                        <h3>Cybersecurity</h3>
+                        <p>Knowledge of best practices and security solutions to protect data and information systems from cyberattacks.</p>
                     </div>
                     <div className="item">
-                        <GiArtificialIntelligence fontSize="6em"/>
-                        <h3>Intelligence artificielle et machine learning</h3>
-                        <p>Fondements en Python pour le développement d'algorithmes, de machine learning et d'intelligence
-                            artificielle, appliqués dans des projets de traitement de données et d'automatisation des processus.</p>
+                        <GiArtificialIntelligence fontSize="6em" />
+                        <h3>Artificial Intelligence and Machine Learning</h3>
+                        <p>Foundations in Python for developing machine learning algorithms and artificial intelligence, applied in data processing and process automation projects.</p>
                     </div>
                     <div className="item">
-                        <MdOutlineManageHistory fontSize="6em"/>
-                        <h3>Gestion de projet</h3>
-                        <p>Capacité à gérer des projets de développement web et mobile du concept à la livraison, en
-                            utilisant des méthodologies agiles pour assurer une collaboration efficace et une exécution
-                            dans les délais.</p>
+                        <MdOutlineManageHistory fontSize="6em" />
+                        <h3>Project Management</h3>
+                        <p>Ability to manage web and mobile development projects from concept to delivery, using agile methodologies to ensure effective collaboration and on-time execution.</p>
                     </div>
                 </div>
             </div>

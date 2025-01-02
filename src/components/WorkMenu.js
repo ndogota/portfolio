@@ -41,8 +41,8 @@ const WorkMenu = ({isOpen, toggleMenu, project}) => {
                         </div>
                         <div>
                             <p>description :</p>
-                            {project.description.map((item) => (
-                                <p>- {item}</p>
+                            {project.description.map((item, index) => (
+                                <p key={index}>- {item}</p>
                             ))}
                         </div>
                         <div>

@@ -12,8 +12,8 @@ const Contact = () => {
                 </div>
                 <div className="contactContent">
                     <div className="contactItem">
-                        <p>Pour toute discussion ou demande d'informations supplémentaires, vous pouvez m'envoyer un email ou me retrouver sur LinkedIn. N'hésitez pas à prendre contact !</p>
-                        <p>Mail : nicolae.dogotaru@gmail.com</p>
+                        <p>For any discussion or additional information, you can send me an email or find me on LinkedIn. Feel free to get in touch!</p>
+                        <p>Email: nicolae.dogotaru@gmail.com</p>
                         <div className="socialLogoWrapper">
                             <a className="socialLogoLink" href="https://www.linkedin.com/in/nicolaedogotaru/" target="_blank" rel="noreferrer">
                                 <FaLinkedin className="socialLogo"/>
@@ -22,7 +22,7 @@ const Contact = () => {
                                 <FaGithubSquare className="socialLogo" />
                             </a>
                         </div>
-                        <p>Pour télecharger mon CV vous pouvez cliquer <a href="/cv.pdf" target="_blank" rel="noreferrer"><span style={{textDecoration:"underline", fontWeight: "bold"}}>ici</span></a>.</p>
+                        <p>To download my resume, you can click <a href="/cv.pdf" target="_blank" rel="noreferrer"><span style={{textDecoration:"underline", fontWeight: "bold"}}>here</span></a>.</p>
                     </div>
                 </div>
             </div>

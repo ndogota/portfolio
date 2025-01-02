@@ -29,25 +29,25 @@ function App() {
     const menuItems = [
         {
             id: 1,
-            title: "ACCUEIL",
+            title: "HOME",
         },
         {
             id: 2,
-            title: "COMPÉTENCES",
+            title: "SKILLS",
         },
         {
             id: 3,
-            title: "PROJETS",
+            title: "PROJECTS",
         },
         {
             id: 4,
-            title: "PARCOURS",
+            title: "CAREER",
         },
         {
             id: 5,
             title: "CONTACT",
         },
-    ]
+    ];
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
