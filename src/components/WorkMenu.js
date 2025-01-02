@@ -33,7 +33,7 @@ const WorkMenu = ({isOpen, toggleMenu, project}) => {
                     </div>
                     <div className="contentWorkMenu">
                         <div>
-                            <p>titre : {project.title}</p>
+                            <p>title : {project.title}</p>
                         </div>
                         <div>
                             <p>technologies :</p>
