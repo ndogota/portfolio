@@ -20,6 +20,10 @@ export default function Contact() {
           ))}
         </h2>
 
+        <p className={styles.tagline} data-reveal>
+          {contact.tagline}
+        </p>
+
         <p className={styles.transmit} data-reveal>
           transmit to{' '}
           <a className={styles.mail} href={`mailto:${email}`}>
@@ -29,7 +33,12 @@ export default function Contact() {
 
         <div className={styles.links} data-reveal>
           {contact.links.map((link) => (
-            <a key={link.label} href={link.href}>
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+            >
               {link.label}
             </a>
           ))}

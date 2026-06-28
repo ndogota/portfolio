@@ -19,18 +19,10 @@
   padding: 0 12px;
 }
 
-.host {
-  display: flex;
-  align-items: center;
-  padding: 0 12px;
-  background: var(--green);
-  color: var(--bg);
-  font-weight: 700;
-}
-
-.value {
+.signal {
   color: var(--green);
   margin-left: 6px;
+  letter-spacing: 0.5px;
 }
 
 .spacer {
@@ -43,6 +35,7 @@
   padding: 0 12px;
   background: var(--bg);
   color: var(--green);
+  font-weight: 500;
 }
 
 @media (max-width: 720px) {

@@ -1,4 +1,4 @@
-import { projects, sectionIds } from '@/lib/content'
+import { projects, sectionIds, workLabel } from '@/lib/content'
 import ScrambleText from './ScrambleText'
 import styles from './Work.module.css'
 
@@ -7,7 +7,7 @@ export default function Work() {
     <section id={sectionIds.work} className={styles.panel}>
       <div className="wrap">
         <p className={styles.head}>
-          <ScrambleText>selected work</ScrambleText>
+          <ScrambleText>{workLabel}</ScrambleText>
         </p>
 
         {projects.map((project) => (
@@ -18,7 +18,15 @@ export default function Work() {
           >
             <div className={styles.index}>{project.index}</div>
             <div>
-              <h3 className={styles.name}>{project.name}</h3>
+              <h3 className={styles.name}>
+                {project.repo ? (
+                  <a href={project.repo} target="_blank" rel="noreferrer">
+                    {project.name}
+                  </a>
+                ) : (
+                  project.name
+                )}
+              </h3>
               <p className={styles.description}>{project.description}</p>
             </div>
             <div className={styles.tags}>

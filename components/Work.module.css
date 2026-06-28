@@ -50,6 +50,19 @@
   font-weight: 400;
 }
 
+.name a {
+  color: inherit;
+  transition: color 0.2s;
+}
+
+.name a:hover {
+  color: var(--green);
+}
+
+.soon .name::before {
+  content: none;
+}
+
 .description {
   color: var(--dim);
   font-size: 13.5px;

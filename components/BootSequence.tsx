@@ -8,18 +8,18 @@ import styles from './BootSequence.module.css'
 /** Colourises one boot line: [ OK ] green, the loaded module blue, etc. */
 function renderBootLine(line: string): ReactNode {
   if (line === '') return ' '
-  if (line.startsWith('dogotaru-systems')) {
+  if (line.startsWith('DOGOTARU SYSTEMS')) {
     return <span className={styles.dim}>{line}</span>
   }
-  if (line === 'access granted') {
-    return <span className={styles.green}>access granted</span>
+  if (line === 'ACCESS GRANTED') {
+    return <span className={styles.green}>ACCESS GRANTED</span>
   }
 
   const okIndex = line.indexOf('[ OK ]')
   const head = okIndex >= 0 ? line.slice(0, okIndex) : line
 
   let headNode: ReactNode = head
-  const loading = head.match(/^(loading\s+)([a-z_]+)(.*)$/)
+  const loading = head.match(/^(LOADING MODULE\s+)([a-z_]+)(.*)$/)
   if (loading) {
     headNode = (
       <>

@@ -12,7 +12,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 const siteUrl = 'https://www.nicolaedogotaru.com/'
 const description =
-  'Nicolae Dogotaru, AI engineer. I build end-to-end LLM systems and the infrastructure under them.'
+  'I build AI products end to end, from the LLM systems down to the infra that keeps them alive in production.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

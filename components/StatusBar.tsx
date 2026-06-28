@@ -1,15 +1,10 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { sectionIds } from '@/lib/content'
+import { statusBar } from '@/lib/content'
 import styles from './StatusBar.module.css'
 
-const channels = [
-  { id: sectionIds.hero, label: 'status' },
-  { id: sectionIds.work, label: 'work' },
-  { id: sectionIds.dossier, label: 'dossier' },
-  { id: sectionIds.contact, label: 'channel' },
-]
+const { channels, signal, pwr, uplink, meta } = statusBar
 
 /** Bottom telemetry bar. CH tracks the section currently in view. */
 export default function StatusBar() {
@@ -36,18 +31,14 @@ export default function StatusBar() {
 
   return (
     <footer className={styles.bar} aria-hidden="true">
-      <span className={styles.host}>dogotaru</span>
-      <span className={styles.seg}>~/portfolio</span>
-      <span className={styles.spacer} />
       <span className={styles.seg}>
-        SIGNAL <span className={styles.value}>▁▃▅▇</span>
+        SIGNAL <span className={styles.signal}>{signal}</span>
       </span>
-      <span className={`${styles.seg} ${styles.hideSmall}`}>
-        PWR <span className={styles.value}>100%</span>
-      </span>
-      <span className={styles.channel}>
-        CH {active}:{channels[active].label}
-      </span>
+      <span className={`${styles.seg} ${styles.hideSmall}`}>{pwr}</span>
+      <span className={styles.spacer} />
+      <span className={styles.channel}>CH {channels[active].label}</span>
+      <span className={`${styles.seg} ${styles.hideSmall}`}>{uplink}</span>
+      <span className={styles.seg}>{meta}</span>
     </footer>
   )
 }

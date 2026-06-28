@@ -36,8 +36,9 @@ export default function Hero() {
         <CommandLine />
 
         <p className={styles.hint}>
-          type <code className={styles.green}>help</code> to explore the system,
-          or scroll to descend
+          {hero.hint.lead}
+          <code className={styles.green}>{hero.hint.command}</code>
+          {hero.hint.tail}
         </p>
       </div>
     </section>

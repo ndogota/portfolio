@@ -63,6 +63,10 @@ export default function CommandLine() {
     ls: () => terminal.ls,
     surface: () => terminal.surface,
     sudo: () => terminal.sudo,
+    experience: () => {
+      scrollToId(sectionIds.experience)
+      return terminal.routeExperience
+    },
     work: () => {
       scrollToId(sectionIds.work)
       return terminal.routeWork

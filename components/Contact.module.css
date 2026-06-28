@@ -23,6 +23,13 @@
   color: var(--fg);
 }
 
+.tagline {
+  color: var(--fg);
+  font-size: clamp(14px, 1.7vw, 17px);
+  max-width: 52ch;
+  margin-bottom: 24px;
+}
+
 .transmit {
   color: var(--dim);
   font-size: 13.5px;
