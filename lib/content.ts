@@ -14,10 +14,18 @@ export const sectionIds = {
   contact: 'contact',
 } as const
 
-/* ---- top bar (dwm-style) ---------------------------------------------- */
+/* ---- identity --------------------------------------------------------- */
 
-/** Focused-window title shown in the bar, dwm + st style. */
-export const host = 'nicolae@dogotaru-systems'
+/** Machine name. Stands for "nicolae dogotaru labs". */
+export const hostname = 'ndlabs'
+
+/** Distro id shown in the boot log. */
+export const distro = 'ndOS'
+
+/** user@host, used in the shell prompt and the focused-window title. */
+export const host = `nicolae@${hostname}`
+
+/* ---- top bar (dwm-style) ---------------------------------------------- */
 
 /** dwm layout symbol: tiled master-stack. */
 export const layoutSymbol = '[]='
@@ -50,16 +58,15 @@ export const workspaces: Workspace[] = [
 
 export interface Hero {
   eyebrow: string
-  titleLines: [string, string]
-  role: { lead: string; tail: string }
+  headlineLines: [string, string]
   statement: string
   hint: { lead: string; command: string; tail: string }
 }
 
+/** The hero leads with the work, not the name. */
 export const hero: Hero = {
-  eyebrow: 'operator profile // access granted',
-  titleLines: ['Nicolae', 'Dogotaru'],
-  role: { lead: 'ai engineer', tail: 'infrastructure' },
+  eyebrow: 'ndlabs // operator profile',
+  headlineLines: ['ai engineer', 'infrastructure'],
   statement: 'I build end-to-end LLM systems that run in production.',
   hint: {
     lead: 'type ',
@@ -305,34 +312,50 @@ export const contact: Contact = {
 
 /* ---- status bar (slstatus telemetry) ---------------------------------- */
 
-/** System telemetry only. Active-section state lives in the dwm tags. */
+/** Right-aligned slstatus readout in the dwm bar. */
 export const statusBar = {
   signal: '▍▍▍▍▎',
-  pwr: 'PWR 98%',
-  uplink: 'UPLINK STABLE',
-  meta: '2026 // FR · REMOTE',
+  meta: '2026 // fr · remote',
 }
 
 /* ---- boot sequence ---------------------------------------------------- */
 
-/** The boot log printed line by line up to "ACCESS GRANTED". */
-export const bootLines = [
-  'DOGOTARU SYSTEMS // TERMLINK PROTOCOL v4.2',
-  'ESTABLISHING SECURE CHANNEL .............. [ OK ]',
-  'MEMORY CHECK  65535 KB ................... [ OK ]',
-  'LOADING MODULE  model_logic ............. [ OK ]',
-  'LOADING MODULE  data_pipeline ........... [ OK ]',
-  'LOADING MODULE  infra_layer ............. [ OK ]',
-  'DECRYPTING OPERATOR DOSSIER ............. [ OK ]',
-  '',
-  'ACCESS GRANTED',
+export interface BootStep {
+  text: string
+  /** Extra pause (ms) after this line, on top of the base cadence. */
+  pause?: number
+}
+
+/**
+ * A believable cold boot: a short kernel/init log, then a getty auto-login
+ * and `startx` into the window manager. Decorative only (aria-hidden).
+ */
+export const bootSequence: BootStep[] = [
+  { text: `${distro} 1.0 LTS  tty1  (kernel 6.9.4-nd)`, pause: 140 },
+  { text: '' },
+  { text: `[    0.000000] booting ${distro} on ${hostname} ...` },
+  { text: '[    0.412088] loading modules: ext4 nvme e1000e drm' },
+  { text: '[  OK  ] Mounted root filesystem.' },
+  { text: '[  OK  ] Reached target Local File Systems.' },
+  { text: '[  OK  ] Started Journal Service.' },
+  { text: '[  OK  ] Started udev Kernel Device Manager.' },
+  { text: '[  OK  ] Started Network Manager.' },
+  { text: '[  OK  ] Reached target Network.' },
+  { text: '[  OK  ] Started OpenSSH Daemon.' },
+  { text: '[  **  ] Starting Display Manager ...', pause: 200 },
+  { text: '[  OK  ] Reached target Graphical Interface.', pause: 120 },
+  { text: '' },
+  { text: `${hostname} login: nicolae`, pause: 460 },
+  { text: 'Last login: just now on tty1', pause: 180 },
+  { text: `${host}:~$ startx`, pause: 420 },
 ]
 
 /* ---- command interpreter ---------------------------------------------- */
 
 /** Static text outputs for the command line. */
 export const terminal = {
-  help: 'available: whoami, experience, work, stack, dossier, contact, clear',
+  help: 'available: whoami, experience, work, stack, dossier, contact, reboot, clear',
+  reboot: 'rebooting ndOS ...',
   whoami:
     'nicolae dogotaru // ai engineer. builds ai products end to end, from the llm systems down to the infra that keeps them alive in prod.',
   stack:

@@ -13,19 +13,13 @@ export default function Hero() {
 
         <h1 className={styles.title}>
           <ScrambleText start="ready" delay={0}>
-            {hero.titleLines[0]}
+            {hero.headlineLines[0]}
           </ScrambleText>
           <br />
           <ScrambleText start="ready" delay={110}>
-            {hero.titleLines[1]}
+            {hero.headlineLines[1]}
           </ScrambleText>
         </h1>
-
-        <p className={styles.role}>
-          <span className={styles.green}>{hero.role.lead}</span>{' '}
-          <span className={styles.dim}>{'//'}</span>{' '}
-          <span className={styles.blue}>{hero.role.tail}</span>
-        </p>
 
         <p className={styles.statement}>
           <ScrambleText start="ready" delay={220}>

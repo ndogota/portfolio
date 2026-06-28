@@ -1,14 +1,20 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { host, layoutSymbol, workspaces } from '@/lib/content'
+import {
+  host,
+  hostname,
+  layoutSymbol,
+  statusBar,
+  workspaces,
+} from '@/lib/content'
 import styles from './TopBar.module.css'
 
 /**
- * dwm-style bar: workspace tags on the left, the tiling layout symbol, then
- * the focused-window title. The tag for the section in view is "selected",
- * mirroring dwm's SchemeSel block. Tags are real anchors, so they still work
- * without JavaScript; only the selected highlight needs the client.
+ * Single dwm bar: workspace tags + tiling layout symbol on the left, the
+ * focused-window title (the section in view), and a right-aligned slstatus
+ * readout. The selected tag mirrors dwm's inverted SchemeSel block; tags are
+ * real anchors so they work without JavaScript.
  */
 export default function TopBar() {
   const [active, setActive] = useState(0)
@@ -52,9 +58,19 @@ export default function TopBar() {
         {layoutSymbol}
       </span>
 
-      <span className={styles.title}>
-        <span className={styles.host}>{host}:</span>
-        <span className={styles.path}>{workspaces[active].path}</span>
+      <span className={styles.title} aria-hidden="true">
+        <span className={styles.host}>{host}</span>
+        <span className={styles.path}>:{workspaces[active].path}</span>
+      </span>
+
+      <span className={styles.spacer} />
+
+      <span className={styles.status} aria-hidden="true">
+        <span className={styles.seg}>
+          signal <span className={styles.accent}>{statusBar.signal}</span>
+        </span>
+        <span className={`${styles.seg} ${styles.hostSeg}`}>{hostname}</span>
+        <span className={`${styles.seg} ${styles.meta}`}>{statusBar.meta}</span>
       </span>
     </header>
   )

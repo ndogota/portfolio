@@ -21,18 +21,11 @@
 
 .title {
   font-weight: 700;
-  font-size: clamp(40px, 9vw, 104px);
-  line-height: 0.95;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  font-size: clamp(28px, 5vw, 54px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
   color: var(--fg);
-  margin-bottom: 12px;
-}
-
-.role {
-  font-size: clamp(16px, 2.6vw, 26px);
-  font-weight: 500;
-  margin-bottom: 34px;
+  margin-bottom: 26px;
 }
 
 .statement {
@@ -50,10 +43,4 @@
 
 .green {
   color: var(--green);
-}
-.blue {
-  color: var(--blue);
-}
-.dim {
-  color: var(--dim);
 }

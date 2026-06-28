@@ -67,7 +67,6 @@
   display: flex;
   align-items: center;
   min-width: 0;
-  color: var(--blue);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -81,14 +80,48 @@
   color: var(--blue);
 }
 
-@media (max-width: 900px) {
+.spacer {
+  flex: 1;
+}
+
+/* ---- right-aligned slstatus ------------------------------------------- */
+.status {
+  display: flex;
+  align-items: center;
+  color: var(--dim);
+}
+
+.seg {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.accent {
+  color: var(--green);
+  margin-left: 5px;
+  letter-spacing: 0.5px;
+}
+
+.hostSeg {
+  color: var(--green);
+}
+
+@media (max-width: 980px) {
   .host {
     display: none;
   }
 }
 
-@media (max-width: 600px) {
-  .title {
+@media (max-width: 760px) {
+  .title,
+  .meta {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .hostSeg {
     display: none;
   }
 }

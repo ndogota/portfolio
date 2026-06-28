@@ -67,25 +67,17 @@
   caret-color: var(--green);
 }
 
-/* prompt syntax colours */
+/* prompt syntax colours: user@host green, path blue, $ dim */
 .prompt {
   white-space: nowrap;
 }
-.arrow {
+.user {
   color: var(--green);
 }
-.cwd {
+.path {
   color: var(--blue);
 }
-.git {
+.sign {
   color: var(--dim);
-}
-.branch {
-  color: var(--red);
-}
-
-@media (max-width: 460px) {
-  .gitInfo {
-    display: none;
-  }
+  margin-left: 2px;
 }

@@ -1,97 +1,137 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
-import { bootLines } from '@/lib/content'
+import { bootSequence } from '@/lib/content'
 import { markReady } from '@/lib/terminalReady'
+import { onReboot } from '@/lib/bootBus'
 import styles from './BootSequence.module.css'
 
-/** Colourises one boot line: [ OK ] green, the loaded module blue, etc. */
-function renderBootLine(line: string): ReactNode {
-  if (line === '') return ' '
-  if (line.startsWith('DOGOTARU SYSTEMS')) {
-    return <span className={styles.dim}>{line}</span>
-  }
-  if (line === 'ACCESS GRANTED') {
-    return <span className={styles.green}>ACCESS GRANTED</span>
-  }
+const BASE_MS = 70
+const START_MS = 200
+const END_MS = 380
 
-  const okIndex = line.indexOf('[ OK ]')
-  const head = okIndex >= 0 ? line.slice(0, okIndex) : line
+/** Colourises one boot line the way a real console renders status tokens. */
+function renderBootLine(text: string): ReactNode {
+  if (text === '') return ' '
 
-  let headNode: ReactNode = head
-  const loading = head.match(/^(LOADING MODULE\s+)([a-z_]+)(.*)$/)
-  if (loading) {
-    headNode = (
+  const status = text.match(/^\[\s*(OK|\*\*)\s*\]/)
+  if (status) {
+    const cls = status[1] === 'OK' ? styles.ok : styles.busy
+    return (
       <>
-        {loading[1]}
-        <span className={styles.blue}>{loading[2]}</span>
-        {loading[3]}
+        <span className={cls}>{status[0]}</span>
+        {text.slice(status[0].length)}
       </>
     )
   }
 
-  return (
-    <>
-      {headNode}
-      {okIndex >= 0 && <span className={styles.green}>[ OK ]</span>}
-    </>
-  )
+  const kernel = text.match(/^(\[\s*\d+\.\d+\])(.*)$/)
+  if (kernel) {
+    return (
+      <>
+        <span className={styles.dim}>{kernel[1]}</span>
+        {kernel[2]}
+      </>
+    )
+  }
+
+  if (text.includes(' login: ')) {
+    const [hostPart, user] = text.split(' login: ')
+    return (
+      <>
+        {hostPart} login: <span className={styles.green}>{user}</span>
+      </>
+    )
+  }
+
+  const prompt = text.match(/^(\S+@\S+?)(:\S*\$)\s(.*)$/)
+  if (prompt) {
+    return (
+      <>
+        <span className={styles.green}>{prompt[1]}</span>
+        <span className={styles.blue}>{prompt[2]}</span> {prompt[3]}
+      </>
+    )
+  }
+
+  return <span className={styles.dim}>{text}</span>
 }
 
 export default function BootSequence() {
-  const [visibleCount, setVisibleCount] = useState(0)
+  const [count, setCount] = useState(0)
   const [fading, setFading] = useState(false)
   const [removed, setRemoved] = useState(false)
-  const done = useRef(false)
+  const timers = useRef<ReturnType<typeof setTimeout>[]>([])
+  const finished = useRef(false)
 
-  const reveal = useCallback(() => {
-    if (done.current) return
-    done.current = true
-    markReady()
-    setFading(true)
-    setTimeout(() => setRemoved(true), 460)
+  const clearTimers = useCallback(() => {
+    timers.current.forEach(clearTimeout)
+    timers.current = []
   }, [])
 
-  useEffect(() => {
-    // The boot log prints for everyone. Reduced motion only drops the
-    // power-on sweep bar (handled in CSS), not the loading experience.
-    const timers: ReturnType<typeof setTimeout>[] = []
+  const finish = useCallback(() => {
+    if (finished.current) return
+    finished.current = true
+    clearTimers()
+    markReady()
+    setFading(true)
+    timers.current.push(setTimeout(() => setRemoved(true), 400))
+  }, [clearTimers])
 
-    let printed = 0
-    const printNext = () => {
-      printed += 1
-      setVisibleCount(printed)
-      if (printed >= bootLines.length) {
-        timers.push(setTimeout(reveal, 520))
-      } else {
-        // ~280-420ms per line so each one is comfortably readable.
-        timers.push(setTimeout(printNext, 280 + Math.random() * 140))
+  const play = useCallback(() => {
+    clearTimers()
+    finished.current = false
+    setRemoved(false)
+    setFading(false)
+    setCount(0)
+    let i = 0
+    const step = () => {
+      i += 1
+      setCount(i)
+      if (i >= bootSequence.length) {
+        timers.current.push(setTimeout(finish, END_MS))
+        return
       }
+      timers.current.push(
+        setTimeout(step, BASE_MS + (bootSequence[i - 1].pause ?? 0)),
+      )
     }
-    timers.push(setTimeout(printNext, 600))
+    timers.current.push(setTimeout(step, START_MS))
+  }, [clearTimers, finish])
 
-    const onKey = () => reveal()
+  useEffect(() => {
+    // Deferred so we never set state synchronously inside the effect body.
+    const kickoff = setTimeout(play, 0)
+    const offReboot = onReboot(play)
+    const onKey = () => finish()
     window.addEventListener('keydown', onKey)
-
     return () => {
+      clearTimeout(kickoff)
+      offReboot()
       window.removeEventListener('keydown', onKey)
-      timers.forEach(clearTimeout)
+      clearTimers()
     }
-  }, [reveal])
+  }, [play, finish, clearTimers])
 
   if (removed) return null
 
   return (
-    <div id="boot" className={`${styles.boot} ${fading ? styles.fading : ''}`}>
-      <div className={styles.powerline} aria-hidden="true" />
-      <div className={styles.log} aria-hidden="true">
-        {bootLines.slice(0, visibleCount).map((line, index) => (
+    <div
+      id="boot"
+      className={`${styles.boot} ${fading ? styles.fading : ''}`}
+      aria-hidden="true"
+      onClick={finish}
+      onTouchStart={finish}
+    >
+      <div className={styles.log}>
+        {bootSequence.slice(0, count).map((step, index) => (
           <div key={index} className={styles.line}>
-            {renderBootLine(line)}
+            {renderBootLine(step.text)}
           </div>
         ))}
+        {!fading && <span className={styles.cursor} />}
       </div>
-      <button type="button" className={styles.skip} onClick={reveal}>
+      <button type="button" className={styles.skip} onClick={finish}>
         [ press any key to skip ]
       </button>
     </div>

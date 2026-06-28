@@ -4,20 +4,32 @@
   z-index: 60;
   background: var(--bg);
   color: var(--fg);
-  padding: 7vh 7vw;
-  font-size: 14px;
+  padding: 24px clamp(16px, 5vw, 56px);
   overflow: hidden;
-  transition: opacity 0.45s ease;
+  cursor: pointer;
+  transition: opacity 0.4s ease;
 }
 
 .fading {
   opacity: 0;
 }
 
-.line {
-  white-space: pre-wrap;
+.log {
+  font-size: clamp(12px, 2.6vw, 14px);
+  line-height: 1.65;
 }
 
+.line {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.ok {
+  color: var(--green);
+}
+.busy {
+  color: var(--yellow);
+}
 .dim {
   color: var(--dim);
 }
@@ -28,27 +40,19 @@
   color: var(--blue);
 }
 
-.powerline {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 2px;
+/* block cursor that prints with the log */
+.cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.05em;
+  margin-top: 4px;
   background: var(--green);
-  z-index: 61;
-  transform: scaleY(50);
-  animation: poweron 0.5s ease-out forwards;
+  vertical-align: text-bottom;
+  animation: blink 1s steps(2, start) infinite;
 }
 
-@keyframes poweron {
-  0% {
-    transform: scaleX(0) scaleY(50);
-  }
-  40% {
-    transform: scaleX(1) scaleY(50);
-  }
-  100% {
-    transform: scaleX(1) scaleY(0);
+@keyframes blink {
+  50% {
     opacity: 0;
   }
 }
@@ -69,13 +73,4 @@
 
 .skip:hover {
   color: var(--green);
-}
-
-/* Reduced motion: keep the boot log, but drop the power-on sweep bar whose
-   scale animation would otherwise freeze into a static green band. The reveal
-   simply happens without the fade (global reduced-motion rule disables it). */
-@media (prefers-reduced-motion: reduce) {
-  .powerline {
-    display: none;
-  }
 }

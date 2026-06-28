@@ -7,8 +7,9 @@ import {
   type KeyboardEvent,
   type ReactNode,
 } from 'react'
-import { email, sectionIds, terminal } from '@/lib/content'
+import { email, host, sectionIds, terminal } from '@/lib/content'
 import { onReady } from '@/lib/terminalReady'
+import { requestReboot } from '@/lib/bootBus'
 import styles from './CommandLine.module.css'
 
 interface LogEntry {
@@ -20,14 +21,9 @@ interface LogEntry {
 function Prompt() {
   return (
     <span className={styles.prompt}>
-      <span className={styles.arrow}>➜</span>{' '}
-      <span className={styles.cwd}>~/portfolio</span>
-      <span className={styles.gitInfo}>
-        {' '}
-        <span className={styles.git}>git:(</span>
-        <span className={styles.branch}>main</span>
-        <span className={styles.git}>)</span>
-      </span>
+      <span className={styles.user}>{host}</span>
+      <span className={styles.path}>:~</span>
+      <span className={styles.sign}>$</span>
     </span>
   )
 }
@@ -66,6 +62,10 @@ export default function CommandLine() {
     ls: () => terminal.ls,
     surface: () => terminal.surface,
     sudo: () => terminal.sudo,
+    reboot: () => {
+      requestReboot()
+      return terminal.reboot
+    },
     experience: () => {
       scrollToId(sectionIds.experience)
       return terminal.routeExperience
