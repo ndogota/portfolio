@@ -70,3 +70,12 @@
 .skip:hover {
   color: var(--green);
 }
+
+/* Reduced motion: keep the boot log, but drop the power-on sweep bar whose
+   scale animation would otherwise freeze into a static green band. The reveal
+   simply happens without the fade (global reduced-motion rule disables it). */
+@media (prefers-reduced-motion: reduce) {
+  .powerline {
+    display: none;
+  }
+}

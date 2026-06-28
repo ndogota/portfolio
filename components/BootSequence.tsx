@@ -53,31 +53,22 @@ export default function BootSequence() {
   }, [])
 
   useEffect(() => {
-    const reduced = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
-    ).matches
+    // The boot log prints for everyone. Reduced motion only drops the
+    // power-on sweep bar (handled in CSS), not the loading experience.
     const timers: ReturnType<typeof setTimeout>[] = []
 
-    if (reduced) {
-      timers.push(
-        setTimeout(() => {
-          setVisibleCount(bootLines.length)
-          reveal()
-        }, 250),
-      )
-    } else {
-      let printed = 0
-      const printNext = () => {
-        printed += 1
-        setVisibleCount(printed)
-        if (printed >= bootLines.length) {
-          timers.push(setTimeout(reveal, 460))
-        } else {
-          timers.push(setTimeout(printNext, 110 + Math.random() * 160))
-        }
+    let printed = 0
+    const printNext = () => {
+      printed += 1
+      setVisibleCount(printed)
+      if (printed >= bootLines.length) {
+        timers.push(setTimeout(reveal, 520))
+      } else {
+        // ~280-420ms per line so each one is comfortably readable.
+        timers.push(setTimeout(printNext, 280 + Math.random() * 140))
       }
-      timers.push(setTimeout(printNext, 600))
     }
+    timers.push(setTimeout(printNext, 600))
 
     const onKey = () => reveal()
     window.addEventListener('keydown', onKey)
