@@ -1,0 +1,52 @@
+.bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  height: var(--statusbar-h);
+  display: flex;
+  align-items: stretch;
+  font-size: 12px;
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  color: var(--dim);
+}
+
+.seg {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+}
+
+.host {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  background: var(--green);
+  color: var(--bg);
+  font-weight: 700;
+}
+
+.value {
+  color: var(--green);
+  margin-left: 6px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.channel {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  background: var(--bg);
+  color: var(--green);
+}
+
+@media (max-width: 720px) {
+  .hideSmall {
+    display: none;
+  }
+}

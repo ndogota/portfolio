@@ -1,0 +1,56 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: calc(var(--topbar-h) + 48px) 0 64px;
+}
+
+.eyebrow {
+  font-size: 13px;
+  color: var(--dim);
+  margin-bottom: 16px;
+}
+
+.dot {
+  color: var(--green);
+}
+
+.title {
+  font-weight: 700;
+  font-size: clamp(40px, 9vw, 104px);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--fg);
+  margin-bottom: 12px;
+}
+
+.role {
+  font-size: clamp(16px, 2.6vw, 26px);
+  font-weight: 500;
+  margin-bottom: 34px;
+}
+
+.statement {
+  font-size: clamp(15px, 1.9vw, 19px);
+  max-width: 46ch;
+  margin-bottom: 42px;
+  color: var(--fg);
+}
+
+.hint {
+  margin-top: 14px;
+  font-size: 12.5px;
+  color: var(--dim);
+}
+
+.green {
+  color: var(--green);
+}
+.blue {
+  color: var(--blue);
+}
+.dim {
+  color: var(--dim);
+}

@@ -1,0 +1,82 @@
+.cli {
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+  border-radius: 6px;
+  max-width: 760px;
+  overflow: hidden;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--dim);
+}
+
+.dot {
+  color: var(--green);
+}
+
+.log {
+  padding: 14px 16px 6px;
+  font-size: 13.5px;
+  max-height: 240px;
+  overflow: auto;
+}
+
+.echo {
+  margin-top: 8px;
+}
+
+.out {
+  color: var(--dim);
+  margin: 1px 0 6px;
+  white-space: pre-wrap;
+}
+
+.link {
+  color: var(--blue);
+}
+
+.error {
+  color: var(--red);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px;
+  border-top: 1px solid var(--line);
+}
+
+.input {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: var(--fg);
+  font-family: var(--mono);
+  font-size: 13.5px;
+  caret-color: var(--green);
+}
+
+/* prompt syntax colours */
+.prompt {
+  white-space: nowrap;
+}
+.arrow {
+  color: var(--green);
+}
+.cwd {
+  color: var(--blue);
+}
+.git {
+  color: var(--dim);
+}
+.branch {
+  color: var(--red);
+}

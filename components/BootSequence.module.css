@@ -1,0 +1,72 @@
+.boot {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: var(--bg);
+  color: var(--fg);
+  padding: 7vh 7vw;
+  font-size: 14px;
+  overflow: hidden;
+  transition: opacity 0.45s ease;
+}
+
+.fading {
+  opacity: 0;
+}
+
+.line {
+  white-space: pre-wrap;
+}
+
+.dim {
+  color: var(--dim);
+}
+.green {
+  color: var(--green);
+}
+.blue {
+  color: var(--blue);
+}
+
+.powerline {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: var(--green);
+  z-index: 61;
+  transform: scaleY(50);
+  animation: poweron 0.5s ease-out forwards;
+}
+
+@keyframes poweron {
+  0% {
+    transform: scaleX(0) scaleY(50);
+  }
+  40% {
+    transform: scaleX(1) scaleY(50);
+  }
+  100% {
+    transform: scaleX(1) scaleY(0);
+    opacity: 0;
+  }
+}
+
+.skip {
+  position: fixed;
+  right: 22px;
+  bottom: 18px;
+  z-index: 62;
+  font-size: 12px;
+  color: var(--dim);
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: var(--mono);
+}
+
+.skip:hover {
+  color: var(--green);
+}

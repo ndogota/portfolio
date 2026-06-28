@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dogotaru-systems : zsh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#1e2326;
+    --bg2:#272e33;
+    --bg3:#2e383c;
+    --fg:#d0cabb;
+    --grey:#7c8377;
+    --green:#a7c080;
+    --blue:#7fbbb3;
+    --aqua:#83c092;
+    --purple:#d699b6;
+    --red:#e67e80;
+    --orange:#e69875;
+    --line:rgba(208,202,187,.12);
+    --line2:rgba(208,202,187,.22);
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--fg);font-family:var(--mono);font-size:14.5px;
+    line-height:1.7;letter-spacing:.005em;overflow-x:hidden;
+  }
+  ::selection{background:rgba(167,192,128,.22)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 30px}
+  .grey{color:var(--grey)} .green{color:var(--green)} .blue{color:var(--blue)}
+  .purple{color:var(--purple)} .red{color:var(--red)} .orange{color:var(--orange)} .aqua{color:var(--aqua)}
+
+  /* ---- CRT (subtle) ---- */
+  .scanlines,.vignette,.flicker{position:fixed;inset:0;pointer-events:none;z-index:50}
+  .scanlines{background:repeating-linear-gradient(0deg,
+    rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,rgba(0,0,0,.10) 3px,rgba(0,0,0,0) 4px);
+    background-size:100% 4px;animation:scan 11s linear infinite;mix-blend-mode:multiply}
+  @keyframes scan{to{background-position:0 -440px}}
+  .vignette{background:radial-gradient(130% 130% at 50% 45%,transparent 62%,rgba(0,0,0,.34) 100%)}
+  .flicker{background:rgba(167,192,128,.012);animation:flick .16s steps(2) infinite;z-index:51}
+  @keyframes flick{0%{opacity:.06}50%{opacity:.01}100%{opacity:.04}}
+
+  /* ---- boot ---- */
+  #boot{position:fixed;inset:0;z-index:60;background:var(--bg);padding:7vh 7vw;
+    font-size:14px;overflow:hidden;color:var(--fg)}
+  #boot .line{white-space:pre-wrap}
+  .powerline{position:fixed;left:0;right:0;top:50%;height:2px;background:var(--green);
+    z-index:61;transform:scaleY(50);animation:poweron .5s ease-out forwards}
+  @keyframes poweron{0%{transform:scaleX(0) scaleY(50)}40%{transform:scaleX(1) scaleY(50)}
+    100%{transform:scaleX(1) scaleY(0);opacity:0}}
+  .skip{position:fixed;right:22px;bottom:18px;z-index:62;font-size:12px;color:var(--grey);
+    border:1px solid var(--line);padding:5px 10px;cursor:pointer}
+
+  /* ---- top bar (window chrome) ---- */
+  .topbar{position:fixed;top:0;left:0;right:0;z-index:40;height:38px;display:flex;
+    align-items:center;justify-content:space-between;padding:0 16px;
+    border-bottom:1px solid var(--line);background:var(--bg2);font-size:12.5px}
+  .topbar .dots{display:flex;gap:7px;align-items:center}
+  .topbar .dots i{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .d1{background:#e67e80}.d2{background:#dbbc7f}.d3{background:#a7c080}
+  .topbar .ttl{color:var(--grey);margin-left:10px}
+  .topbar .tabs{display:flex;gap:16px}
+  .topbar .tabs a{color:var(--grey);transition:color .2s}
+  .topbar .tabs a:hover{color:var(--green)}
+
+  main{opacity:0;transition:opacity .8s ease}
+  main.live{opacity:1}
+
+  /* ---- hero ---- */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 0 64px}
+  .ey{font-size:13px;color:var(--grey);margin-bottom:16px}
+  .ey .green{color:var(--green)}
+  .title{font-weight:800;font-size:clamp(44px,9.5vw,116px);line-height:.92;
+    letter-spacing:-.02em;color:var(--fg);margin-bottom:10px}
+  .role{font-size:clamp(16px,2.6vw,26px);font-weight:500;margin-bottom:34px}
+  .stmt{font-size:clamp(15px,1.9vw,19px);max-width:46ch;margin-bottom:42px;color:var(--fg)}
+  .stmt .grey{color:var(--grey)}
+
+  /* ---- prompt ---- */
+  .p-arrow{color:var(--green)} .p-cwd{color:var(--blue)} .p-git{color:#5e8aa0} .p-branch{color:var(--red)}
+  .cli{border:1px solid var(--line);background:var(--bg2);border-radius:6px;max-width:760px;overflow:hidden}
+  .cli-bar{display:flex;align-items:center;gap:7px;padding:7px 12px;border-bottom:1px solid var(--line);
+    background:var(--bg3);font-size:12px;color:var(--grey)}
+  .cli-bar i{width:10px;height:10px;border-radius:50%;display:inline-block}
+  .cli-log{padding:14px 16px 6px;font-size:13.5px;max-height:240px;overflow:auto}
+  .cli-log .echo{margin-top:8px}
+  .cli-log .out{color:var(--grey);margin:1px 0 6px;white-space:pre-wrap}
+  .cli-log .out a{color:var(--blue)}
+  .cli-row{display:flex;align-items:center;gap:8px;padding:11px 16px;border-top:1px solid var(--line)}
+  .cli-row input{flex:1;background:transparent;border:0;outline:none;color:var(--fg);
+    font-family:var(--mono);font-size:13.5px;caret-color:var(--green)}
+  .hint{margin-top:14px;font-size:12.5px;color:var(--grey)}
+  .hint code{color:var(--green)}
+
+  /* ---- panels ---- */
+  .panel{padding:80px 0;border-top:1px solid var(--line)}
+  .phead{font-size:13px;color:var(--grey);margin-bottom:28px}
+  .phead::before{content:"# ";color:var(--green)}
+
+  .item{display:grid;grid-template-columns:50px 1fr auto;gap:22px;align-items:start;
+    padding:24px 6px;border-bottom:1px solid var(--line);
+    opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease,background .22s}
+  .item.in{opacity:1;transform:none}
+  .item:hover{background:var(--bg2)}
+  .item .ix{font-weight:700;font-size:18px;color:var(--green)}
+  .item h3{font-size:clamp(17px,2.2vw,22px);font-weight:500;margin-bottom:7px;color:var(--fg)}
+  .item h3::before{content:"./";color:var(--grey);font-weight:400}
+  .item p{color:var(--grey);font-size:13.5px;max-width:56ch}
+  .tg{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end;max-width:220px}
+  .tg span{font-size:11px;padding:2px 9px;border-radius:3px;background:var(--bg3);color:var(--blue)}
+  .soon h3{color:var(--grey)}.soon .ix{color:var(--grey)}.soon .tg span{color:var(--orange)}
+
+  .dossier{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:start}
+  .dossier .lead{font-size:clamp(19px,2.6vw,27px);line-height:1.3;font-weight:500;color:var(--fg)}
+  .dossier p{color:var(--grey);margin-bottom:16px}
+  .kv{line-height:2.1;font-size:13.5px}
+  .kv .k{color:var(--purple);display:inline-block;width:78px}
+  .kv .v{color:var(--fg)}
+  .kv .eq{color:var(--grey)}
+  .reveal{opacity:0;transform:translateY(12px);transition:opacity .55s ease,transform .55s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  .open h2{font-weight:800;font-size:clamp(34px,7vw,80px);line-height:.98;letter-spacing:-.02em;
+    margin-bottom:26px;color:var(--fg)}
+  .open .mail{color:var(--green);border-bottom:1px solid var(--line2);padding-bottom:2px}
+  .links{display:flex;gap:22px;margin-top:28px;flex-wrap:wrap}
+  .links a{color:var(--grey);transition:color .2s}
+  .links a:hover{color:var(--green)}
+  .links a::before{content:"→ ";color:var(--green)}
+  .foot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    padding:22px 0 80px;margin-top:64px;border-top:1px solid var(--line);font-size:12px;color:var(--grey)}
+
+  .glitch{animation:glx .2s steps(2) 1}
+  @keyframes glx{0%{transform:translate(2px,0);clip-path:inset(10% 0 72% 0)}
+    50%{transform:translate(-2px,0);clip-path:inset(64% 0 14% 0)}100%{transform:none}}
+
+  /* ---- tmux-style status bar ---- */
+  .tmux{position:fixed;bottom:0;left:0;right:0;z-index:40;height:30px;display:flex;align-items:stretch;
+    font-size:12px;background:var(--bg2);border-top:1px solid var(--line);color:var(--grey)}
+  .tmux .seg{display:flex;align-items:center;padding:0 12px}
+  .tmux .host{background:var(--green);color:var(--bg);font-weight:700}
+  .tmux .win{color:var(--grey)}
+  .tmux .win.active{background:var(--bg3);color:var(--green)}
+  .tmux .right{margin-left:auto;display:flex}
+  .tmux .clock{background:var(--bg3);color:var(--fg)}
+
+  @media (max-width:720px){
+    .wrap{padding:0 18px}
+    .topbar .ttl{display:none}.topbar .tabs{gap:12px}
+    .item{grid-template-columns:30px 1fr;gap:12px}
+    .tg{grid-column:1/-1;justify-content:flex-start;max-width:none;margin-top:6px}
+    .dossier{grid-template-columns:1fr;gap:30px}
+    .tmux .hideS{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important}
+    .scanlines,.flicker{display:none}
+    main{opacity:1}.hero .stmt,.item,.reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="scanlines" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="flicker" aria-hidden="true"></div>
+
+<div id="boot" aria-hidden="true">
+  <div class="powerline"></div>
+  <div id="bootlog"></div>
+  <div class="skip" id="skip">[ press any key to skip ]</div>
+</div>
+
+<div class="screen">
+  <div class="topbar">
+    <span class="dots"><i class="d1"></i><i class="d2"></i><i class="d3"></i>
+      <span class="ttl">nicolae@dogotaru-systems: ~/portfolio — zsh</span></span>
+    <span class="tabs"><a href="#work">work</a><a href="#about">dossier</a><a href="#contact">channel</a></span>
+  </div>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap">
+        <p class="ey"><span class="green">●</span> session restored // access granted</p>
+        <h1 class="title">nicolae<br>dogotaru</h1>
+        <p class="role"><span class="green">ai engineer</span> <span class="grey">//</span> <span class="blue">infrastructure</span></p>
+        <p class="stmt" data-scramble>I build end-to-end LLM systems that run in production.</p>
+
+        <div class="cli">
+          <div class="cli-bar"><span class="green">●</span> zsh — interactive</div>
+          <div class="cli-log" id="clilog"></div>
+          <div class="cli-row" id="clirow">
+            <span class="prompt"></span>
+            <input id="cli" autocomplete="off" spellcheck="false" aria-label="terminal command input">
+          </div>
+        </div>
+        <p class="hint">type <code>help</code> to explore the system, or scroll to descend</p>
+      </div>
+    </section>
+
+    <section class="panel" id="work">
+      <div class="wrap">
+        <p class="phead" data-scramble>selected work</p>
+        <article class="item">
+          <div class="ix">01</div>
+          <div><h3>social-corpus-engine</h3>
+          <p>Pulls large social datasets through an LLM pipeline to extract structure, model behaviour, and profile a persona at scale.</p></div>
+          <div class="tg"><span>python</span><span>llm</span><span>data</span></div>
+        </article>
+        <article class="item">
+          <div class="ix">02</div>
+          <div><h3>infra-automation</h3>
+          <p>Agentless provisioning and k3s clusters with secrets, stateful services, and reproducible git-only deploys.</p></div>
+          <div class="tg"><span>k3s</span><span>terraform</span><span>infra</span></div>
+        </article>
+        <article class="item soon">
+          <div class="ix">03</div>
+          <div><h3>flagship.classified</h3>
+          <p>The one build that proves the whole thesis. Recovery in progress. This slot is reserved for it.</p></div>
+          <div class="tg"><span>soon</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="about">
+      <div class="wrap dossier">
+        <p class="lead reveal" data-scramble>I design the model logic, build the pipelines and APIs around it, and ship the infrastructure it runs on.</p>
+        <div class="reveal">
+          <p>French engineer based near Paris, master's in systems and networks. Comfortable from the data layer up to production, biased toward systems that are durable rather than clever.</p>
+          <div class="kv">
+            <div><span class="k">focus</span><span class="eq">= </span><span class="v">end-to-end LLM systems</span></div>
+            <div><span class="k">layers</span><span class="eq">= </span><span class="v">model · pipelines · app · infra</span></div>
+            <div><span class="k">cloud</span><span class="eq">= </span><span class="v">AWS · GCP · Azure · self-hosted</span></div>
+            <div><span class="k">status</span><span class="eq">= </span><span class="v green">open // freelance and CDI</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel open" id="contact">
+      <div class="wrap">
+        <p class="phead">open channel</p>
+        <h2 class="reveal">let's build<br>something<br>that runs.</h2>
+        <p class="reveal grey" style="font-size:13.5px">transmit to <a class="mail" href="mailto:contact@nicolaedogotaru.com">contact@nicolaedogotaru.com</a></p>
+        <div class="links reveal">
+          <a href="https://github.com/ndogota">github</a>
+          <a href="#">linkedin</a>
+        </div>
+        <div class="foot">
+          <span>nicolae dogotaru // operator</span>
+          <span>© 2026 // built from scratch in the dark</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const NOISE = "ABCDEFGHKMNPRTUVXZ0123456789#%&@?/\\<>[]{}=+*АБВГДЖЗИКЛМПРСТФЦЧШЯ";
+  const PROMPT = '<span class="p-arrow">➜</span> <span class="p-cwd">~/portfolio</span> <span class="p-git">git:(</span><span class="p-branch">main</span><span class="p-git">)</span>';
+
+  function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+
+  /* scramble */
+  function scramble(el){
+    const real = el.dataset.txt || el.textContent;
+    el.dataset.txt = real;
+    if(reduce){ el.textContent=real; return; }
+    let f=0; const dur=16+real.length;
+    const id=setInterval(()=>{
+      let o="";
+      for(let i=0;i<real.length;i++){
+        const ch=real[i];
+        if(ch===" "||ch==="\n"){o+=ch;continue;}
+        o+= i<(f-6)? ch : NOISE[(Math.random()*NOISE.length)|0];
+      }
+      el.textContent=o; f++;
+      if(f>dur){clearInterval(id); el.textContent=real;}
+    },26);
+  }
+
+  /* boot */
+  const bootLines=[
+    "dogotaru-systems // termlink v4.2",
+    "establishing secure channel ........... [ OK ]",
+    "loading  model_logic .................. [ OK ]",
+    "loading  data_pipeline ................ [ OK ]",
+    "loading  infra_layer .................. [ OK ]",
+    "decrypting operator dossier ........... [ OK ]",
+    "",
+    "access granted",
+  ];
+  function fmtBoot(l){
+    let s=esc(l);
+    s=s.replace("[ OK ]",'<span class="green">[ OK ]</span>');
+    if(s.startsWith("loading")) s=s.replace(/loading\s+([a-z_]+)/,'loading  <span class="blue">$1</span>');
+    if(s==="access granted") s='<span class="green">access granted</span>';
+    if(s.startsWith("dogotaru-systems")) s='<span class="grey">'+s+'</span>';
+    return s;
+  }
+  const boot=document.getElementById('boot'),blog=document.getElementById('bootlog'),main=document.getElementById('main');
+  let booted=false;
+  function reveal(){
+    if(booted)return; booted=true;
+    boot.style.transition="opacity .45s ease"; boot.style.opacity="0";
+    setTimeout(()=>boot.remove(),460);
+    main.classList.add('live');
+    document.querySelectorAll('.hero [data-scramble]').forEach((e,i)=>setTimeout(()=>scramble(e),260+i*110));
+    setTimeout(()=>document.getElementById('cli').focus(),640);
+  }
+  function runBoot(){
+    if(reduce){ blog.innerHTML=bootLines.map(fmtBoot).join("<br>"); setTimeout(reveal,250); return; }
+    let i=0;(function n(){
+      if(i>=bootLines.length){setTimeout(reveal,460);return;}
+      const d=document.createElement('div'); d.className='line'; d.innerHTML=fmtBoot(bootLines[i]);
+      blog.appendChild(d); i++; setTimeout(n,110+Math.random()*160);
+    })();
+  }
+  document.getElementById('skip').addEventListener('click',reveal);
+  addEventListener('keydown',()=>{if(!booted)reveal();});
+  addEventListener('load',()=>setTimeout(runBoot,600));
+
+  /* render prompt in input row */
+  document.querySelector('#clirow .prompt').innerHTML=PROMPT+'&nbsp;';
+
+  /* scroll reveal */
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+    e.target.classList.add('in');
+    const s=e.target.matches('[data-scramble]')?e.target:e.target.querySelector('[data-scramble]');
+    if(s&&!s.dataset.done){s.dataset.done=1;scramble(s);}
+    io.unobserve(e.target);
+  }});},{threshold:.2});
+  document.querySelectorAll('.item,.reveal,.panel [data-scramble]').forEach(n=>io.observe(n));
+
+  /* glitch */
+  if(!reduce) setInterval(()=>{const s=document.querySelector('.screen');
+    s.classList.add('glitch');setTimeout(()=>s.classList.remove('glitch'),220);},11000+Math.random()*8000);
+
+  /* command interpreter */
+  (function(){
+    const input=document.getElementById('cli'),log=document.getElementById('clilog');
+    function echo(cmd,out){
+      const e=document.createElement('div'); e.className='echo';
+      e.innerHTML=PROMPT+' '+esc(cmd); log.appendChild(e);
+      if(out!==null&&out!==undefined){const o=document.createElement('div');o.className='out';o.innerHTML=out;log.appendChild(o);}
+      log.scrollTop=log.scrollHeight;
+    }
+    function go(sel){const t=document.querySelector(sel);if(t)t.scrollIntoView({behavior:'smooth'});}
+    const cmds={
+      help:()=>"available: whoami, work, dossier, stack, contact, clear",
+      whoami:()=>"nicolae dogotaru // ai engineer. builds end-to-end llm systems and the infrastructure under them.",
+      work:()=>{go('#work');return "routing to ./work ...";},
+      dossier:()=>{go('#about');return "opening operator dossier ...";},
+      about:()=>{go('#about');return "opening operator dossier ...";},
+      stack:()=>"python · pytorch · llms · rag · fastapi · node · postgres · kubernetes · k3s · terraform · aws · gcp · azure · grafana",
+      contact:()=>{go('#contact');return "channel open // <a href='mailto:contact@nicolaedogotaru.com'>contact@nicolaedogotaru.com</a>";},
+      clear:()=>{log.innerHTML="";return null;},
+      ls:()=>"work/  dossier/  channel/  flagship.classified",
+      surface:()=>"the surface is still hostile. stay in the tunnels.",
+      sudo:()=>"nice try, operator.",
+    };
+    input.addEventListener('keydown',e=>{
+      if(e.key!=='Enter')return;
+      const raw=input.value.trim(); input.value=""; if(!raw)return;
+      const key=raw.toLowerCase().split(' ')[0];
+      if(cmds[key]){const r=cmds[key]();echo(raw,r===null?null:r);}
+      else echo(raw,'<span class="red">command not found:</span> '+esc(key)+". type 'help'.");
+    });
+  })();
+
+  /* tmux status bar */
+  (function(){
+    const bar=document.createElement('div'); bar.className='tmux';
+    bar.innerHTML="<span class='seg host'>dogotaru</span>"+
+      "<span class='seg win' data-s='#top'>0:status</span>"+
+      "<span class='seg win' data-s='#work'>1:work</span>"+
+      "<span class='seg win' data-s='#about'>2:dossier</span>"+
+      "<span class='seg win' data-s='#contact'>3:channel</span>"+
+      "<span class='right'><span class='seg hideS'>val-d'oise</span><span class='seg clock' id='clk'></span></span>";
+    document.body.appendChild(bar);
+    const wins=[...bar.querySelectorAll('.win')];
+    function tick(){const d=new Date();
+      document.getElementById('clk').textContent=d.toTimeString().slice(0,5)+" 28-jun-26";}
+    tick(); setInterval(tick,15000);
+    function active(){let cur='#top';
+      wins.forEach(w=>{const el=document.querySelector(w.dataset.s);
+        if(el&&el.getBoundingClientRect().top<220)cur=w.dataset.s;});
+      wins.forEach(w=>w.classList.toggle('active',w.dataset.s===cur));}
+    active(); addEventListener('scroll',active,{passive:true});
+    wins.forEach(w=>w.addEventListener('click',()=>document.querySelector(w.dataset.s).scrollIntoView({behavior:'smooth'})));
+  })();
+</script>
+</body>
+</html>
