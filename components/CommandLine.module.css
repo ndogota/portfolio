@@ -80,3 +80,9 @@
 .branch {
   color: var(--red);
 }
+
+@media (max-width: 460px) {
+  .gitInfo {
+    display: none;
+  }
+}

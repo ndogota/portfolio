@@ -29,15 +29,6 @@
   flex: 1;
 }
 
-.channel {
-  display: flex;
-  align-items: center;
-  padding: 0 12px;
-  background: var(--bg);
-  color: var(--green);
-  font-weight: 500;
-}
-
 @media (max-width: 720px) {
   .hideSmall {
     display: none;

@@ -14,20 +14,36 @@ export const sectionIds = {
   contact: 'contact',
 } as const
 
-/* ---- top bar ---------------------------------------------------------- */
+/* ---- top bar (dwm-style) ---------------------------------------------- */
 
-export const brand = 'DOGOTARU SYSTEMS'
+/** Focused-window title shown in the bar, dwm + st style. */
+export const host = 'nicolae@dogotaru-systems'
 
-export interface Tab {
+/** dwm layout symbol: tiled master-stack. */
+export const layoutSymbol = '[]='
+
+export interface Workspace {
+  id: string
+  /** dwm tag label (workspace number). */
+  tag: string
+  /** Human name, used for the aria-label. */
   label: string
-  href: string
+  /** Shell path shown in the title when this workspace is focused. */
+  path: string
 }
 
-export const tabs: Tab[] = [
-  { label: 'experience', href: `#${sectionIds.experience}` },
-  { label: 'work', href: `#${sectionIds.work}` },
-  { label: 'dossier', href: `#${sectionIds.dossier}` },
-  { label: 'channel', href: `#${sectionIds.contact}` },
+/** Each section is a dwm workspace/tag. The one in view is "selected". */
+export const workspaces: Workspace[] = [
+  { id: sectionIds.hero, tag: '1', label: 'status', path: '~' },
+  {
+    id: sectionIds.experience,
+    tag: '2',
+    label: 'experience',
+    path: '~/experience',
+  },
+  { id: sectionIds.work, tag: '3', label: 'work', path: '~/work' },
+  { id: sectionIds.dossier, tag: '4', label: 'dossier', path: '~/dossier' },
+  { id: sectionIds.contact, tag: '5', label: 'channel', path: '~/channel' },
 ]
 
 /* ---- hero ------------------------------------------------------------- */
@@ -290,25 +306,14 @@ export const contact: Contact = {
   ],
 }
 
-/* ---- status bar ------------------------------------------------------- */
+/* ---- status bar (slstatus telemetry) ---------------------------------- */
 
-export interface Channel {
-  id: string
-  label: string
-}
-
+/** System telemetry only. Active-section state lives in the dwm tags. */
 export const statusBar = {
   signal: '▍▍▍▍▎',
   pwr: 'PWR 98%',
   uplink: 'UPLINK STABLE',
   meta: '2026 // FR · REMOTE',
-  channels: [
-    { id: sectionIds.hero, label: 'STATUS' },
-    { id: sectionIds.experience, label: 'EXPERIENCE' },
-    { id: sectionIds.work, label: 'WORK' },
-    { id: sectionIds.dossier, label: 'DOSSIER' },
-    { id: sectionIds.contact, label: 'CHANNEL' },
-  ] satisfies Channel[],
 }
 
 /* ---- boot sequence ---------------------------------------------------- */

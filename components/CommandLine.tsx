@@ -21,10 +21,13 @@ function Prompt() {
   return (
     <span className={styles.prompt}>
       <span className={styles.arrow}>➜</span>{' '}
-      <span className={styles.cwd}>~/portfolio</span>{' '}
-      <span className={styles.git}>git:(</span>
-      <span className={styles.branch}>main</span>
-      <span className={styles.git}>)</span>
+      <span className={styles.cwd}>~/portfolio</span>
+      <span className={styles.gitInfo}>
+        {' '}
+        <span className={styles.git}>git:(</span>
+        <span className={styles.branch}>main</span>
+        <span className={styles.git}>)</span>
+      </span>
     </span>
   )
 }

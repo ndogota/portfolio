@@ -6,69 +6,98 @@
   z-index: 40;
   height: var(--topbar-h);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 16px;
+  align-items: stretch;
+  padding-right: 12px;
   border-bottom: 1px solid var(--line);
   background: var(--bg-soft);
   font-size: 12.5px;
 }
 
-.brand {
+/* ---- workspace tags --------------------------------------------------- */
+.tags {
+  display: flex;
+  align-items: stretch;
+}
+
+.tag {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
+  padding: 0 11px;
+  color: var(--dim);
+  transition:
+    color 0.15s,
+    background 0.15s;
 }
 
-.rec {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--red);
-  animation: blink 1.4s steps(2, start) infinite;
+/* dwm "occupied" marker: a small square in the upper-left of each tag. */
+.tag::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 4px;
+  width: 4px;
+  height: 4px;
+  border: 1px solid var(--dim);
 }
 
-@keyframes blink {
-  50% {
-    opacity: 0.25;
-  }
-}
-
-.recLabel {
-  color: var(--red);
-  letter-spacing: 0.08em;
-}
-
-.name {
+.tag:hover {
   color: var(--fg);
-  letter-spacing: 0.04em;
 }
 
-.tabs {
+.selected {
+  background: var(--green);
+  color: var(--bg);
+  font-weight: 700;
+}
+
+.selected::before {
+  border-color: var(--bg);
+}
+
+/* ---- layout symbol + focused title ------------------------------------ */
+.layout {
   display: flex;
   align-items: center;
-  gap: 10px;
+  padding: 0 12px;
+  color: var(--cyan);
 }
 
-.tabs a {
+.title {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  color: var(--blue);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.host {
   color: var(--dim);
-  transition: color 0.2s;
 }
 
-.tabs a:hover {
-  color: var(--green);
+.path {
+  color: var(--blue);
 }
 
-.sep {
-  color: var(--dim);
-  opacity: 0.5;
-}
-
-@media (max-width: 720px) {
-  .name {
+@media (max-width: 900px) {
+  .host {
     display: none;
   }
-  .tabs {
-    gap: 8px;
+}
+
+@media (max-width: 600px) {
+  .title {
+    display: none;
+  }
+}
+
+@media (max-width: 460px) {
+  .layout {
+    display: none;
+  }
+  .tag {
+    padding: 0 9px;
   }
 }
