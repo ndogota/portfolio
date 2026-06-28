@@ -64,6 +64,10 @@ a {
 
 /* ---- layout helpers --------------------------------------------------- */
 .wrap {
+  /* width:100% keeps the container at the same max-width in both block
+     panels and the flex-centered hero, where a bare auto-margin flex item
+     would otherwise shrink to its content. */
+  width: 100%;
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 0 var(--gutter);
