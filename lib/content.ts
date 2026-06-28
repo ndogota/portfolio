@@ -57,9 +57,9 @@ export interface Hero {
 }
 
 export const hero: Hero = {
-  eyebrow: 'OPERATOR PROFILE // ACCESS GRANTED',
-  titleLines: ['NICOLAE', 'DOGOTARU'],
-  role: { lead: 'AI ENGINEER', tail: 'INFRASTRUCTURE' },
+  eyebrow: 'operator profile // access granted',
+  titleLines: ['Nicolae', 'Dogotaru'],
+  role: { lead: 'ai engineer', tail: 'infrastructure' },
   statement: 'I build end-to-end LLM systems that run in production.',
   hint: {
     lead: 'type ',
@@ -301,8 +301,8 @@ export const contact: Contact = {
     { label: 'linkedin', href: 'https://www.linkedin.com/in/nicolaedogotaru/' },
   ],
   footer: [
-    'NICOLAE DOGOTARU // OPERATOR',
-    '© 2026 // BUILT FROM SCRATCH IN THE DARK',
+    'nicolae dogotaru // operator',
+    '© 2026',
   ],
 }
 
