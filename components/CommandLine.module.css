@@ -55,6 +55,9 @@
 
 .input {
   flex: 1;
+  /* Allow the flex item to shrink below its intrinsic width on narrow
+     screens, otherwise the input forces the whole row to overflow. */
+  min-width: 0;
   background: transparent;
   border: 0;
   outline: none;
