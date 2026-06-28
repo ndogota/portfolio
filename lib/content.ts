@@ -85,7 +85,7 @@ export const experience: Experience[] = [
   {
     role: 'Founding Engineer · AI & Infrastructure',
     company: 'STHO Global',
-    type: 'CDI',
+    type: 'Full-time',
     dates: 'Sept 2025 to June 2026',
     location: 'Abu Dhabi, United Arab Emirates · Hybrid',
     bullets: [
@@ -98,7 +98,7 @@ export const experience: Experience[] = [
   {
     role: 'Software Engineer · AI & Data-Driven Platforms',
     company: 'Pulse Partners',
-    type: 'CDI',
+    type: 'Full-time',
     dates: 'Feb 2025 to Sept 2025',
     location: 'Martigny, Valais, Switzerland · Hybrid',
     bullets: [
@@ -273,7 +273,7 @@ export const dossier: Dossier = {
     { key: 'focus', value: 'end-to-end LLM systems' },
     { key: 'layers', value: 'model · pipelines · app · infra' },
     { key: 'cloud', value: 'k3s · Terraform · AWS · GCP · Azure' },
-    { key: 'status', value: 'open // freelance and CDI', accent: true },
+    { key: 'status', value: 'open // freelance and full-time', accent: true },
   ],
 }
 
@@ -300,10 +300,7 @@ export const contact: Contact = {
     { label: 'github', href: 'https://github.com/ndogota' },
     { label: 'linkedin', href: 'https://www.linkedin.com/in/nicolaedogotaru/' },
   ],
-  footer: [
-    'nicolae dogotaru // operator',
-    '© 2026',
-  ],
+  footer: ['nicolae dogotaru // operator', '© 2026'],
 }
 
 /* ---- status bar (slstatus telemetry) ---------------------------------- */
