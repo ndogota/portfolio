@@ -32,11 +32,6 @@ export default function ScrambleText({
   const [text, setText] = useState(children)
 
   useEffect(() => {
-    const reduced = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
-    ).matches
-    if (reduced) return
-
     let frameTimer: ReturnType<typeof setInterval> | undefined
     let startTimer: ReturnType<typeof setTimeout> | undefined
     let done = false

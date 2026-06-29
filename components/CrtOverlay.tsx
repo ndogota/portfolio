@@ -9,8 +9,6 @@ import styles from './CrtOverlay.module.css'
  */
 export default function CrtOverlay() {
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-
     const root = document.documentElement
     let outer: ReturnType<typeof setTimeout>
     let inner: ReturnType<typeof setTimeout>

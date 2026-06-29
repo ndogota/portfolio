@@ -12,11 +12,6 @@ export default function RevealObserver() {
       document.querySelectorAll<HTMLElement>('[data-reveal]'),
     )
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      nodes.forEach((node) => node.classList.add('is-visible'))
-      return
-    }
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

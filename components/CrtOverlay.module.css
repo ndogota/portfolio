@@ -51,10 +51,3 @@
     opacity: 0.02;
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .scanlines,
-  .flicker {
-    display: none;
-  }
-}

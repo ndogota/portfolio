@@ -73,8 +73,8 @@ a {
 }
 
 /* ---- scroll reveal ---------------------------------------------------- */
-/* Driven by a global attribute so it is targetable from <noscript> and the
-   reduced-motion query. Hidden only when JS is present and motion is allowed. */
+/* Driven by a global attribute so <noscript> can force it visible. Hidden by
+   default; RevealObserver adds .is-visible as each element scrolls in. */
 [data-reveal] {
   opacity: 0;
   transform: translateY(12px);
@@ -110,21 +110,5 @@ a {
 @media (max-width: 720px) {
   :root {
     --gutter: 18px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-  }
-  [data-reveal] {
-    opacity: 1;
-    transform: none;
   }
 }
