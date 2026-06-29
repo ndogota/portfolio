@@ -26,6 +26,12 @@ export default function TopBar() {
         const el = document.getElementById(workspace.id)
         if (el && el.getBoundingClientRect().top < 220) current = index
       })
+      // At the bottom of the page the last (short) section may never cross the
+      // threshold, so force it active once we have scrolled all the way down.
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2
+      if (atBottom) current = workspaces.length - 1
       setActive((prev) => (prev === current ? prev : current))
     }
 
