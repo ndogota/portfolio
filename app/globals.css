@@ -88,25 +88,6 @@ a {
   transform: none;
 }
 
-/* ---- rare CRT sync glitch (toggled on <html> by CrtOverlay) ----------- */
-@keyframes crt-sync {
-  0% {
-    transform: translate(2px, 0);
-    clip-path: inset(10% 0 72% 0);
-  }
-  50% {
-    transform: translate(-2px, 0);
-    clip-path: inset(64% 0 14% 0);
-  }
-  100% {
-    transform: none;
-  }
-}
-
-.crt-glitch main {
-  animation: crt-sync 0.2s steps(2) 1;
-}
-
 @media (max-width: 720px) {
   :root {
     --gutter: 18px;
